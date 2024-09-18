@@ -10,6 +10,7 @@ User roles:
 		Backend: Herrmann
 		Frontend: Noah
 		Springer: Tom
+  		BackUp: Max
 
 
 Data will be fetched once on program start from both API’s and saved in Database. 
