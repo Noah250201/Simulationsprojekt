@@ -7,7 +7,7 @@ API’s: 	Steam Spy API
 
 User roles: 
 
-		Backend: Herrmann
+		Backend: Herr Mann
 		Frontend: Noah
 		Springer: Tom
   		BackUp: Max
