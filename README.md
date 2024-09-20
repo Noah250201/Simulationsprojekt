@@ -4,7 +4,7 @@ Abgabedatum 28.03.2024
 
 API’s: 	Steam Spy API
 		Steam Web ApI
-		Boersen API?
+		Boersen API?  -- alpha vantage
 
 
 User roles: 
