@@ -65,5 +65,5 @@ Comparing initial and current price of games with users over time, reviews, hour
 
 Comparing player numbers, initial and current prices of their games, reviews with their stock performance
 
-
+ER Diagramm
 

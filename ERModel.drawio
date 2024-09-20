@@ -1,0 +1,242 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Page-1" id="uBUSxN6oMUStYOfofS0Z">
+    <mxGraphModel dx="1732" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lahSlETp8_09CoaiddEQ-1" value="ER Diagram" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+          <mxGeometry x="-820" width="820" height="920" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-7" value="Games" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="180" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-8" value="&lt;u&gt;ID&lt;/u&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="60" y="70" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-9" value="" style="endArrow=none;html=1;rounded=0;entryX=0.967;entryY=0.76;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-7" target="lahSlETp8_09CoaiddEQ-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="240" as="sourcePoint" />
+            <mxPoint x="360" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-10" value="Name" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="50" y="150" width="70" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-12" value="InitialPreis" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="60" y="240" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-13" value="CurrentPreis" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="150" y="260" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-14" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-10" target="lahSlETp8_09CoaiddEQ-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="240" as="sourcePoint" />
+            <mxPoint x="360" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-15" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-12" target="lahSlETp8_09CoaiddEQ-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="240" as="sourcePoint" />
+            <mxPoint x="360" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-16" value="" style="endArrow=none;html=1;rounded=0;exitX=0.425;exitY=0.983;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.656;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-7" target="lahSlETp8_09CoaiddEQ-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="240" as="sourcePoint" />
+            <mxPoint x="360" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-17" value="owners" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="180" y="50" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-18" value="avg players forever" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="270" y="25" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-19" value="avg players last 2 weeks" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="310" y="240" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-20" value="" style="endArrow=none;html=1;rounded=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.367;exitY=0.94;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-17" target="lahSlETp8_09CoaiddEQ-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="410" as="sourcePoint" />
+            <mxPoint x="360" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-21" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-7" target="lahSlETp8_09CoaiddEQ-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="320" as="sourcePoint" />
+            <mxPoint x="360" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-22" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-7" target="lahSlETp8_09CoaiddEQ-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="320" as="sourcePoint" />
+            <mxPoint x="360" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-25" value="Publisher" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="580" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-26" value="Developer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="190" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-29" value="hat" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="407" y="155" width="67" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-30" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-7" target="lahSlETp8_09CoaiddEQ-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="350" as="sourcePoint" />
+            <mxPoint x="360" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-35" value="m" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-30">
+          <mxGeometry x="-0.028" y="-4" relative="1" as="geometry">
+            <mxPoint x="-32" y="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-28" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-29" target="lahSlETp8_09CoaiddEQ-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="185" as="sourcePoint" />
+            <mxPoint x="360" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-36" value="n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-28">
+          <mxGeometry x="-0.0189" relative="1" as="geometry">
+            <mxPoint x="44" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-40" value="hat" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="200" y="320" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-42" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.417;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-26" target="lahSlETp8_09CoaiddEQ-40">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="sourcePoint" />
+            <mxPoint x="370" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-44" value="m" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-42">
+          <mxGeometry x="0.1586" y="-4" relative="1" as="geometry">
+            <mxPoint x="18" y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-41" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-40" target="lahSlETp8_09CoaiddEQ-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="332.25947368421043" y="374.2105263157895" as="sourcePoint" />
+            <mxPoint x="319.9994117647059" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-43" value="n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-41">
+          <mxGeometry x="0.0745" y="1" relative="1" as="geometry">
+            <mxPoint x="2" y="-39" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-45" value="&lt;u&gt;ID&lt;/u&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="50" y="510" width="95" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-46" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-26" target="lahSlETp8_09CoaiddEQ-45">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="sourcePoint" />
+            <mxPoint x="370" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-47" value="&lt;u&gt;ID&lt;/u&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="680" y="270" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-48" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-47" target="lahSlETp8_09CoaiddEQ-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="sourcePoint" />
+            <mxPoint x="370" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-49" value="score rank" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="380" y="40" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-50" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-7" target="lahSlETp8_09CoaiddEQ-49">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="sourcePoint" />
+            <mxPoint x="370" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-51" value="Kurs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="572" y="430" width="136" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-52" value="Date" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="550" y="590" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-53" value="Price" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="690" y="555" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-54" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-52" target="lahSlETp8_09CoaiddEQ-51">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="sourcePoint" />
+            <mxPoint x="370" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-55" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-53" target="lahSlETp8_09CoaiddEQ-51">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="450" as="sourcePoint" />
+            <mxPoint x="430" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-56" value="hat" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="605" y="300" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-57" value="hat" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="380" y="440" width="60" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-58" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-56" target="lahSlETp8_09CoaiddEQ-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="320" as="sourcePoint" />
+            <mxPoint x="530" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-65" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-58">
+          <mxGeometry x="0.375" relative="1" as="geometry">
+            <mxPoint x="-10" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-59" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-26" target="lahSlETp8_09CoaiddEQ-57">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="sourcePoint" />
+            <mxPoint x="370" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-62" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-59">
+          <mxGeometry x="-0.2668" y="2" relative="1" as="geometry">
+            <mxPoint x="-16" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-60" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-57" target="lahSlETp8_09CoaiddEQ-51">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="430" as="sourcePoint" />
+            <mxPoint x="440" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-64" value="n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-60">
+          <mxGeometry x="0.1436" relative="1" as="geometry">
+            <mxPoint x="45" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-61" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-51" target="lahSlETp8_09CoaiddEQ-56">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="400" as="sourcePoint" />
+            <mxPoint x="530" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-66" value="n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="lahSlETp8_09CoaiddEQ-61">
+          <mxGeometry y="1" relative="1" as="geometry">
+            <mxPoint x="-9" y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-67" value="Symbol" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="lahSlETp8_09CoaiddEQ-1">
+          <mxGeometry x="430" y="555" width="90" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="lahSlETp8_09CoaiddEQ-68" value="" style="endArrow=none;html=1;rounded=0;exitX=0.678;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="lahSlETp8_09CoaiddEQ-1" source="lahSlETp8_09CoaiddEQ-67" target="lahSlETp8_09CoaiddEQ-51">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="sourcePoint" />
+            <mxPoint x="370" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
