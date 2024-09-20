@@ -21,6 +21,11 @@ Frontend will consist of html, css, and ReactJS
 
 Database will (probably) be in Postgres
 
+Project communication will be done through Discord Server
+
+Project will be managed through GitHub
+
+
 
 
 
