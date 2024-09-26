@@ -3,7 +3,7 @@
 Abgabedatum 28.03.2024
 
 API’s: 	Steam Spy API
-		Steam Web ApI
+		Google Trends API: https://serpapi.com/playground?engine=google_trends&q=Coffee
 		Boersen API?  -- alpha vantage
 
 
