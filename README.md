@@ -51,7 +51,7 @@ Data will be fetched once on program start from both API’s and saved in Databa
 
 Backend will be done in java Springboot
 
-Frontend will consist of html, css, and ReactJS
+Frontend will consist of html, css, and ChartJS
 
 Database will (probably) be in Postgres
 
@@ -61,9 +61,9 @@ Project will be managed through GitHub
 
 Diagrams: 
 
-Comparing initial and current price of games with users over time, reviews, hours played, hours played individually…
+Comparing initial and current price of games with users over time, reviews, hours played, hours played individually…(player success)
 
-Comparing player numbers, initial and current prices of their games, reviews with their stock performance
+Comparing player numbers, initial and current prices of publishers games, reviews with their stock performance
 
 ER Diagramm
 
