@@ -1,0 +1,32 @@
+.content{
+    background-color: #28282B;
+    width: 100%;
+    min-height: 100%;
+    position: fixed;
+}
+
+.diagrams{
+    display: flex;
+    position: fixed;
+    min-height: 100%;   
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#diagram_one,
+#diagram_two{
+    display: flex;
+    width: 50%;
+    height: 50%;
+}
+
+#diagram_three{
+    display: flex;
+    width: 100%;
+}
+.diagram{
+    box-shadow: 10px 10px 10px 5px white;
+    border-radius: 20px;
+    height: 20rem;
+}
