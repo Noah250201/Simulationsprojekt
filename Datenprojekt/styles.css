@@ -3,6 +3,7 @@
     width: 100%;
     min-height: 100%;
     position: fixed;
+    overflow: scroll;
 }
 
 .diagrams{
@@ -12,21 +13,44 @@
     width: 100%;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 #diagram_one,
 #diagram_two{
     display: flex;
-    width: 50%;
-    height: 50%;
 }
 
 #diagram_three{
     display: flex;
-    width: 100%;
 }
 .diagram{
-    box-shadow: 10px 10px 10px 5px white;
+    box-shadow: 0px 0px 10px 10px white;
     border-radius: 20px;
-    height: 20rem;
+    height: 25rem;
+    cursor: pointer;
+    margin: 10px 10px 10px 10px;
 }
+
+.diagram-wide{
+    box-shadow: 0px 0px 10px 10px white;
+    border-radius: 20px;
+    height: 25rem;
+    cursor: pointer;
+    margin: 10px 10px 10px 10px;
+    width: 100rem;
+}
+
+
+#diagram_one:hover{
+        box-shadow: 0px 0px 10px 10px #c820d8;
+}
+
+#diagram_two:hover{
+    box-shadow: 0px 0px 10px 10px #19ca1c;
+}
+
+#diagram_three:hover{
+    box-shadow: 0px 0px 10px 10px #19cab7;
+}
+
