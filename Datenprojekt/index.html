@@ -25,7 +25,46 @@
    </div>
 </div>
 
-<script type="module" src="main.js"></script>
+<div class="popup" id="popup_one">
+    <div class="popup-content">
+        <!-- Hauptinhalt -->
+        <div class="main-content" id="main_content">
+            <span class="close" onclick="closePopup('popup_one')">&times;</span>
+            <p>Content for Diagram 1</p>
+        </div>
+
+        <!-- Einstellungen -->
+        <div class="settings" onclick="openSettings('popup_one')">
+            Einstellungen
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="popup_two">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popup_two')">&times;</span>
+        <p>Content for Diagram 2</p>
+    </div>
+
+ <!-- Einstellungen -->
+        <div class="settings" onclick="openSettings('popup_two')">
+            Einstellungen
+        </div>
+    </div>
+</div>
+<div class="popup" id="popup_three">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popup_three')">&times;</span>
+        <p>Content for Diagram 3</p>
+    </div>
+
+ <!-- Einstellungen -->
+        <div class="settings" onclick="openSettings('popup_three')">
+            Einstellungen
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
