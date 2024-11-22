@@ -1,0 +1,28 @@
+CRETE DATABASE Simulationsprojekt;
+CRETE Table stock(
+       courseID integer primary key,
+       symbol varchar(20) NOT NULL,
+       date DATE NOT NULL,
+       price double
+);
+
+Create Table publisher(
+          publisherID integer primary key,
+          publisherName String Not Null,
+ );
+Create Table analytics(
+          analyticsID integer primary key,
+          month Date NOT NULL,
+          searches integer,     
+)
+Create Table games(
+          gameID integer primary key,
+          gameName String,
+          owners String,
+          initialPrice double,
+          currentPrice double,
+          avgPlayerForever integer,
+          avgPlayerLast2Weeks integer ,
+          scoreRank integer,  
+
+)

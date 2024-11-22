@@ -49,7 +49,7 @@ Zeitplan: 	Abgabe 28.03.2024
 
 Data will be fetched once on program start from both API’s and saved in Database. 
 
-Backend will be done in java Springboot
+Backend will be done in java
 
 Frontend will consist of html, css, and ChartJS
 
