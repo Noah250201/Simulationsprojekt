@@ -13,7 +13,9 @@ Create Table publisher(
 Create Table analytics(
           analyticsID integer primary key,
           month Date NOT NULL,
-          searches integer,     
+          searches integer, 
+          gameID
+          publisherID    
 )
 Create Table games(
           gameID integer primary key,
