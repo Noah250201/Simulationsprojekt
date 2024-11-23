@@ -1,24 +1,21 @@
-// Function to open a popup
 function openPopup(popupId) {
     const popup = document.getElementById(popupId);
     if (popup) {
-        popup.style.display = 'block'; // Show the popup
+        popup.style.display = 'block'; 
     } else {
         console.error(`Popup with ID '${popupId}' not found.`);
     }
 }
 
-// Function to close a popup
 function closePopup(popupId) {
     const popup = document.getElementById(popupId);
     if (popup) {
-        popup.style.display = 'none'; // Hide the popup
+        popup.style.display = 'none'; 
     } else {
         console.error(`Popup with ID '${popupId}' not found.`);
     }
 }
 
-// Attach event listeners after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('diagram_one').addEventListener('click', () => openPopup('popup_one'));
     document.getElementById('diagram_two').addEventListener('click', () => openPopup('popup_two'));
@@ -26,27 +23,51 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function openSettings(popupId) {
-    const popupContent = document.querySelector(`#${popupId} .main-content`);
-    if (popupContent) {
-        popupContent.innerHTML = `
-            <h2>Einstellungen</h2>
-            <p>Hier kannst du deine Einstellungen vornehmen.</p>
-            <button onclick="closeSettings('${popupId}')">Zurück</button>
-        `;
+    const settingsContent = document.querySelector(`#${popupId} .settings-content`);
+    const mainContent = document.querySelector(`#${popupId} .main-content`);
+    if (settingsContent) {
+        
+        mainContent.style.display = 'none';
+
+       
+        settingsContent.classList.remove('slide-out');
+        settingsContent.classList.add('slide-in');
+        settingsContent.style.display = 'block'; 
     } else {
-        console.error(`Main content not found for popup '${popupId}'`);
+        console.error(`Settings content not found for popup '${popupId}'`);
     }
 }
 
 function closeSettings(popupId) {
-    const popupContent = document.querySelector(`#${popupId} .main-content`);
-    if (popupContent) {
-        popupContent.innerHTML = `
-            <span class="close" onclick="closePopup('${popupId}')">&times;</span>
-            <p>Content for Diagram 1</p>
-        `;
+    const settingsContent = document.querySelector(`#${popupId} .settings-content`);
+    const mainContent = document.querySelector(`#${popupId} .main-content`);
+    if (settingsContent) {
+        
+        settingsContent.classList.remove('slide-in');
+        settingsContent.classList.add('slide-out');
+
+        
+        setTimeout(() => {
+            settingsContent.style.display = 'none';
+            mainContent.style.display = 'block'; 
+        }, 500); 
     } else {
-        console.error(`Main content not found for popup '${popupId}'`);
+        console.error(`Settings content not found for popup '${popupId}'`);
     }
 }
+
+
+function saveSettings(popupId) {
+    
+    const dropdowns = document.querySelectorAll(`#${popupId} select`);
+    const values = {};
+    dropdowns.forEach((dropdown) => {
+        values[dropdown.id] = dropdown.value;
+    });
+
+    console.log(`Saved settings for ${popupId}:`, values);
+
+    // Ausgewählte Settings an Backend senden
+}
+
 

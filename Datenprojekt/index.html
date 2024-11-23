@@ -27,43 +27,103 @@
 
 <div class="popup" id="popup_one">
     <div class="popup-content">
-        <!-- Hauptinhalt -->
-        <div class="main-content" id="main_content">
+        <div class="main-content" id="main_content_one">
             <span class="close" onclick="closePopup('popup_one')">&times;</span>
             <p>Content for Diagram 1</p>
         </div>
 
-        <!-- Einstellungen -->
+        <!-- Einstellungen-Container -->
+        <div class="settings-content" id="settings_content_one">
+            <h2>Einstellungen für Diagram 1</h2>
+            <label for="dropdown1_1">Option 1:</label>
+            <select id="dropdown1_1">
+                <option value="value1">Wert 1</option>
+                <option value="value2">Wert 2</option>
+                <option value="value3">Wert 3</option>
+            </select>
+            <br/>
+            <label for="dropdown1_2">Option 2:</label>
+            <select id="dropdown1_2">
+                <option value="valueA">Wert A</option>
+                <option value="valueB">Wert B</option>
+            </select>
+            <br/>
+            <button onclick="saveSettings('popup_one')">Speichern</button>
+            <button onclick="closeSettings('popup_one')">Zurück</button>
+        </div>
+
         <div class="settings" onclick="openSettings('popup_one')">
-            Einstellungen
+            <p>Einstellungen</p>
         </div>
     </div>
 </div>
 
 <div class="popup" id="popup_two">
     <div class="popup-content">
-        <span class="close" onclick="closePopup('popup_two')">&times;</span>
-        <p>Content for Diagram 2</p>
-    </div>
+        <div class="main-content" id="main_content_two">
+            <span class="close" onclick="closePopup('popup_two')">&times;</span>
+            <p>Content for Diagram 2</p>
+        </div>
 
- <!-- Einstellungen -->
+        <!-- Einstellungen-Container -->
+        <div class="settings-content" id="settings_content_two">
+            <h2>Einstellungen für Diagram 2</h2>
+            <label for="dropdown2_1">Option 1:</label>
+            <select id="dropdown2_1">
+                <option value="alpha">Alpha</option>
+                <option value="beta">Beta</option>
+                <option value="gamma">Gamma</option>
+            </select>
+            <br/>
+            <label for="dropdown2_2">Option 2:</label>
+            <select id="dropdown2_2">
+                <option value="delta">Delta</option>
+                <option value="epsilon">Epsilon</option>
+            </select>
+            <br/>
+            <button onclick="saveSettings('popup_two')">Speichern</button>
+            <button onclick="closeSettings('popup_two')">Zurück</button>
+        </div>
+
         <div class="settings" onclick="openSettings('popup_two')">
-            Einstellungen
+            <p>Einstellungen</p>
         </div>
     </div>
 </div>
+
 <div class="popup" id="popup_three">
     <div class="popup-content">
-        <span class="close" onclick="closePopup('popup_three')">&times;</span>
-        <p>Content for Diagram 3</p>
-    </div>
+        <div class="main-content" id="main_content_three">
+            <span class="close" onclick="closePopup('popup_three')">&times;</span>
+            <p>Content for Diagram 3</p>
+        </div>
 
- <!-- Einstellungen -->
+        <!-- Einstellungen-Container -->
+        <div class="settings-content" id="settings_content_three">
+            <h2>Einstellungen für Diagram 3</h2>
+            <label for="dropdown3_1">Option 1:</label>
+            <select id="dropdown3_1">
+                <option value="red">Rot</option>
+                <option value="blue">Blau</option>
+                <option value="green">Grün</option>
+            </select>
+            <br/>
+            <label for="dropdown3_2">Option 2:</label>
+            <select id="dropdown3_2">
+                <option value="circle">Kreis</option>
+                <option value="square">Quadrat</option>
+            </select>
+            <br/>
+            <button onclick="saveSettings('popup_three')">Speichern</button>
+            <button onclick="closeSettings('popup_three')">Zurück</button>
+        </div>
+
         <div class="settings" onclick="openSettings('popup_three')">
-            Einstellungen
+            <p>Einstellungen</p>
         </div>
     </div>
 </div>
+
 <script type="text/javascript" src="main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
