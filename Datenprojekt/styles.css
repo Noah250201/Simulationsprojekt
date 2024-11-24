@@ -5,6 +5,7 @@ body, html {
     height: 100%;
     overflow-y: auto; 
     background-color: #28282B;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 p, h1, h2{
@@ -28,6 +29,9 @@ p, h1, h2{
     justify-content: center; 
     gap: 20px; 
     width: 100%;
+}
+.diagram{
+    max-width: 50rem;
 }
 
 .diagram, .diagram-wide {
@@ -116,7 +120,7 @@ p, h1, h2{
 }
 
 select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -179,6 +183,7 @@ button:hover {
     z-index: 2;
     display: none;
     overflow: auto;
+    padding-left: 20px;
 }
 
 .settings-content.slide-in {
@@ -189,4 +194,9 @@ button:hover {
 .settings-content.slide-out {
     display: block;
     animation: settingsSlideOut 0.5s ease-in forwards;
+}
+
+select:hover{
+    cursor: pointer;
+    color: #17a2a2;
 }
