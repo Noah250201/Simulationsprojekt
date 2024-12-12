@@ -91,7 +91,7 @@ fetch(endpoint, { // endpoint controller in backend set in switchcase above
     headers: {
         'Content-Type': 'application/json', 
     },
-    body: JSON.stringify(payload), ad
+    body: JSON.stringify(payload),
 })
     .then((response) => {
         if (!response.ok) {
