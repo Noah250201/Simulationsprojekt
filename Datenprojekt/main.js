@@ -65,9 +65,47 @@ function saveSettings(popupId) {
         values[dropdown.id] = dropdown.value;
     });
 
-    console.log(`Saved settings for ${popupId}:`, values);
+    let endpoint;
+    switch (popupId) {
+        case 'popup_one':
+            endpoint = '/save-settings-one'; // Controller for Diagram 1
+            break;
+        case 'popup_two':
+            endpoint = '/save-settings-two'; // Controller for Diagram 2
+            break;
+        case 'popup_three':
+            endpoint = '/save-settings-three'; // Controller for Diagram 3
+            break;
+        default:
+            console.error(`Unknown popupId: ${popupId}`);
+            return;
+    }
 
-    // Ausgewählte Settings an Backend senden
+const payload = {
+    popupId: popupId, 
+    settings: values, 
+};
+
+fetch(endpoint, { // endpoint controller in backend set in switchcase above
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json', 
+    },
+    body: JSON.stringify(payload), ad
+})
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json(); 
+    })
+    .then((data) => {
+        console.log('Settings successfully saved:', data);
+    })
+    .catch((error) => {
+        console.error('Error saving settings:', error); 
+    });
+
+console.log(`Sent settings for ${popupId} to ${endpoint}:`, payload); 
+
 }
-
-
