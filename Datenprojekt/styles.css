@@ -31,17 +31,33 @@ p, h1, h2{
     width: 100%;
     box-sizing: border-box;
 }
+.top-diagrams{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 85%; 
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+#diagram_one, #diagram_two {
+    flex: 1; 
+    max-width: calc(50% - 10px);
+}
+
 .diagram{
     height: 25rem;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 10px white;
     cursor: pointer;
     flex-shrink: 1;
+    margin-top: 20px;
+    flex-shrink: 2;
 }
 
 .diagram:nth-child(1),
 .diagram:nth-child(2) {
-    width: calc((100rem - 20px) / 2);
+    width: calc((100rem - 30px) / 2);
 }
 
 .diagram, .diagram-wide {
@@ -71,7 +87,7 @@ p, h1, h2{
 @media (max-width: 768px) {
     .diagram:nth-child(1),
     .diagram:nth-child(2) {
-        width: 40%;
+        width: calc((100rem - 40px) / 2);
     }
 
     .diagram-wide {
