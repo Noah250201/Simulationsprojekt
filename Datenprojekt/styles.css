@@ -29,9 +29,19 @@ p, h1, h2{
     justify-content: center; 
     gap: 20px; 
     width: 100%;
+    box-sizing: border-box;
 }
 .diagram{
-    max-width: 50rem;
+    height: 25rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 10px white;
+    cursor: pointer;
+    flex-shrink: 1;
+}
+
+.diagram:nth-child(1),
+.diagram:nth-child(2) {
+    width: calc((100rem - 20px) / 2);
 }
 
 .diagram, .diagram-wide {
@@ -41,6 +51,32 @@ p, h1, h2{
     cursor: pointer;
     margin: 10px;
     min-width: 40rem;
+}
+
+@media (max-width: 1024px) {
+    .diagrams {
+        flex-wrap: wrap;
+    }
+    
+    .diagram:nth-child(1),
+    .diagram:nth-child(2) {
+        width: 45%;
+    }
+
+    .diagram-wide {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .diagram:nth-child(1),
+    .diagram:nth-child(2) {
+        width: 40%;
+    }
+
+    .diagram-wide {
+        width: 100%;
+    }
 }
 
 .diagram-wide {
