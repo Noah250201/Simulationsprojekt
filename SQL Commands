@@ -1,4 +1,4 @@
-CRETE DATABASE Simulationsprojekt;
+CRETE DATABASE Datenbankprojekt;
 CRETE Table stock(
        courseID integer primary key,
        symbol varchar(20) NOT NULL,
