@@ -9,7 +9,17 @@ CRETE Table stock(
 Create Table publisher(
           publisherID integer primary key,
           publisherName String Not Null,
+          courseID fk
+          analytics fk
+          publisher_games fk
  );
+
+Create Table publisher_games(
+          publisher_gamesID integer pk,
+          publisherID fk
+          gamesID fk
+)
+
 Create Table analytics(
           analyticsID integer primary key,
           month Date NOT NULL,
@@ -25,6 +35,8 @@ Create Table games(
           currentPrice double,
           avgPlayerForever integer,
           avgPlayerLast2Weeks integer ,
-          scoreRank integer,  
+          scoreRank integer,
+          publisher_games ID
+          analytics ID
 
 )
