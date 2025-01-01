@@ -140,6 +140,64 @@ p, h1, h2{
     overflow: hidden; 
 }
 
+.popup-content-1{
+    box-shadow: 0px 0px 10px 10px #c820d8;
+}
+
+.popup-content-2{
+   box-shadow: 0px 0px 10px 10px #19ca1c;
+}
+
+.popup-content-3{
+    box-shadow: 0px 0px 10px 10px #19cab7;
+}
+
+.select_1:hover{
+    color: #c820d8;
+}
+
+.select_1:focus{
+    border-color: #c820d8;
+}
+
+.select_2:hover{
+    color: #19ca1c;
+}
+
+.select_2:focus{
+    border-color: #19ca1c;
+}
+
+.select_3:hover{
+    color: #19cab7;
+}
+.select_3:focus {
+    border-color: #19cab7;
+}
+
+.button_pink{
+    background-color: #c820d8;
+}
+
+.button_pink:hover{
+    background-color: #72157b;
+}
+
+.button_green{
+    background-color: #19ca1c;
+}
+
+.button_green:hover{
+    background-color: #13a715;
+}
+
+.button_blue{
+    background-color: #19cab7;
+}
+.button_blue:hover{
+    background-color: #17a2a2;
+}
+
 .popup-content .main-content {
     flex: 1; 
     padding: 20px;
@@ -182,7 +240,6 @@ select {
 }
 
 select:focus {
-    border-color: #19cab7;
     outline: none;
 }
 
@@ -197,14 +254,9 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #19cab7;
     color: #FAF9F6;
     font-size: 1rem;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #17a2a2;
 }
 
 @keyframes settingsSlideIn {
@@ -250,5 +302,4 @@ button:hover {
 
 select:hover{
     cursor: pointer;
-    color: #17a2a2;
 }

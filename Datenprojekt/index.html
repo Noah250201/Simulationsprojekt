@@ -27,7 +27,7 @@
 </div>
 
 <div class="popup" id="popup_one">
-    <div class="popup-content">
+    <div class="popup-content popup-content-1">
         <div class="main-content" id="main_content_one">
             <span class="close" onclick="closePopup('popup_one')">&times;</span>
             <p>Content for Diagram 1</p>
@@ -37,20 +37,20 @@
         <div class="settings-content" id="settings_content_one">
             <h2>Einstellungen für Diagram 1</h2>
             <label for="dropdown1_1">Option 1:</label>
-            <select id="dropdown1_1">
+            <select id="dropdown1_1" class="select_3">
                 <option value="value1">Wert 1</option>
                 <option value="value2">Wert 2</option>
                 <option value="value3">Wert 3</option>
             </select>
             <br/>
             <label for="dropdown1_2">Option 2:</label>
-            <select id="dropdown1_2">
+            <select id="dropdown1_2" class="select_3">
                 <option value="valueA">Wert A</option>
                 <option value="valueB">Wert B</option>
             </select>
             <br/>
-            <button onclick="saveSettings('popup_one')">Speichern</button>
-            <button onclick="closeSettings('popup_one')">Zurück</button>
+            <button onclick="saveSettings('popup_one')" class="button_pink">Speichern</button>
+            <button onclick="closeSettings('popup_one')" class="button_pink">Zurück</button>
         </div>
 
         <div class="settings" onclick="openSettings('popup_one')">
@@ -60,7 +60,7 @@
 </div>
 
 <div class="popup" id="popup_two">
-    <div class="popup-content">
+    <div class="popup-content popup-content-2">
         <div class="main-content" id="main_content_two">
             <span class="close" onclick="closePopup('popup_two')">&times;</span>
             <p>Content for Diagram 2</p>
@@ -70,20 +70,20 @@
         <div class="settings-content" id="settings_content_two">
             <h2>Einstellungen für Diagram 2</h2>
             <label for="dropdown2_1">Option 1:</label>
-            <select id="dropdown2_1">
+            <select id="dropdown2_1" class="select_2">
                 <option value="alpha">Alpha</option>
                 <option value="beta">Beta</option>
                 <option value="gamma">Gamma</option>
             </select>
             <br/>
             <label for="dropdown2_2">Option 2:</label>
-            <select id="dropdown2_2">
+            <select id="dropdown2_2" class="select_2">
                 <option value="delta">Delta</option>
                 <option value="epsilon">Epsilon</option>
             </select>
             <br/>
-            <button onclick="saveSettings('popup_two')">Speichern</button>
-            <button onclick="closeSettings('popup_two')">Zurück</button>
+            <button onclick="saveSettings('popup_two')" class="button_green">Speichern</button>
+            <button onclick="closeSettings('popup_two')" class="button_green">Zurück</button>
         </div>
 
         <div class="settings" onclick="openSettings('popup_two')">
@@ -93,7 +93,7 @@
 </div>
 
 <div class="popup" id="popup_three">
-    <div class="popup-content">
+    <div class="popup-content popup-content-3">
         <div class="main-content" id="main_content_three">
             <span class="close" onclick="closePopup('popup_three')">&times;</span>
             <p>Content for Diagram 3</p>
@@ -103,20 +103,20 @@
         <div class="settings-content" id="settings_content_three">
             <h2>Einstellungen für Diagram 3</h2>
             <label for="dropdown3_1">Option 1:</label>
-            <select id="dropdown3_1">
+            <select id="dropdown3_1" class="select_3">
                 <option value="red">Rot</option>
                 <option value="blue">Blau</option>
                 <option value="green">Grün</option>
             </select>
             <br/>
             <label for="dropdown3_2">Option 2:</label>
-            <select id="dropdown3_2">
+            <select id="dropdown3_2" class="select_3">
                 <option value="circle">Kreis</option>
                 <option value="square">Quadrat</option>
             </select>
             <br/>
-            <button onclick="saveSettings('popup_three')">Speichern</button>
-            <button onclick="closeSettings('popup_three')">Zurück</button>
+            <button onclick="saveSettings('popup_three')" class="button_blue">Speichern</button>
+            <button onclick="closeSettings('popup_three')" class="button_blue">Zurück</button>
         </div>
 
         <div class="settings" onclick="openSettings('popup_three')">
