@@ -1,27 +1,32 @@
+
 var jsonfile = {
 "jsonarray": [{
     "stockprice":"112",
-    "date":"14.8.23"},
+    "date":"16.1.23"},
 {
-    "stockprice":"114",
-    "date":"17.8.23"
-}]
+    "stockprice":"122",
+    "date":"15.2.23",},
+{
+    "stockprice":"124",
+    "date":"14.3.23"
+}
+]
 }; //die Variable wird später durch die Response ersetzt
 
-var labels = jsonfile.jsonarray.map(function(e){
+var data = jsonfile.jsonarray.map(function(e){
     return e.stockprice;
 });
-var data = jsonfile.jsonarray.map(function(e){
+var labels = jsonfile.jsonarray.map(function(e){
     return e.date;
 });
 
-var ctx = canvas.getContext('2d');
+var ctx = document.getElementById('d1');
 var config = {
     type: 'line',
     data: {
         labels: labels,
         datasets: [{
-            label: 'Graph Line',
+            label: 'birthdates',
             data: data
         }]
     }
