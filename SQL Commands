@@ -1,6 +1,6 @@
 CRETE DATABASE Datenbankprojekt;
 CRETE Table stock(
-       courseID integer primary key,
+       stockID integer primary key,
        symbol varchar(20) NOT NULL,
        date DATE NOT NULL,
        price double
