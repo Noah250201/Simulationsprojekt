@@ -35,7 +35,7 @@ p, h1, h2{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    width: 85%; 
+    width: 95vw; 
     box-sizing: border-box;
     gap: 20px;
 }
@@ -43,6 +43,7 @@ p, h1, h2{
 #diagram_one, #diagram_two {
     flex: 1; 
     max-width: calc(50% - 10px);
+    height: 45vh;
 }
 
 .diagram{
@@ -91,12 +92,13 @@ p, h1, h2{
     }
 
     .diagram-wide {
-        width: 100%;
+        width: 95vw;
     }
 }
 
 .diagram-wide {
-    width: 100rem;
+    width: 95vw;
+    height: 45vh;
 }
 
 #diagram_one:hover {
