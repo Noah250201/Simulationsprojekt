@@ -64,6 +64,15 @@ var config = {
                 size: 20,
               },
             },
+            beginAtZero: true,
+            ticks: {
+              
+              max: 200, //TODO hard coded ticks, need to be adjusted
+              min: 0,
+              stepSize: 20
+            },
+            // grid line settings
+           
           },
           y1: {
             type: 'linear',
@@ -77,8 +86,15 @@ var config = {
                   size: 20,
                 },
               },
-    
+              beginAtZero: true,
+            ticks: {
+              beginAtZero: true,
+              max: 3000, //TODO hard coded ticks, need to be adjusted
+              min: 0,
+              stepSize: 500
+            },
             // grid line settings
+            
             grid: {
               drawOnChartArea: false, // only want the grid lines for one axis to show up
             },
