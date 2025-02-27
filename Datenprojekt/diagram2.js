@@ -5,7 +5,7 @@ var jsonfile = {
     "date":"16.1.23"},
 {
     "stockprice":"122",
-    "date":"15.2.23",},
+    "date":"15.2.23"},
 {
     "stockprice":"124",
     "date":"14.3.23"
