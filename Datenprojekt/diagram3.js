@@ -22,7 +22,7 @@ var labels = jsonfile.jsonarray.map(function(e){
 
 var ctx = document.getElementById('d3');
 var config = {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: labels,
         datasets: [{

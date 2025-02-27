@@ -13,7 +13,7 @@ var jsonfile = {
     "date":"14.3.23"
 }
 ]
-}; //die Variable wird später durch die Response ersetzt
+}; //variable will be replaced by the response later
 
 var data1 = jsonfile.jsonarray.map(function(e){
     return e.stockprice;
@@ -56,11 +56,27 @@ var config = {
             type: 'linear',
             display: true,
             position: 'left',
+            title: {
+              display: true,
+              text: 'Aktienkurs in €', //currency needs to be checked, dont know what the response will look like
+              align: 'center',
+              font: {
+                size: 20,
+              },
+            },
           },
           y1: {
             type: 'linear',
             display: true,
             position: 'right',
+            title: {
+                display: true,
+                text: 'Google Aufrufe',
+                align: 'center',
+                font: {
+                  size: 20,
+                },
+              },
     
             // grid line settings
             grid: {
