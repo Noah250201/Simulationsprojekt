@@ -1,34 +1,72 @@
 
 var jsonfile = {
 "jsonarray": [{
-    "stockprice":"112",
-    "date":"16.1.23"},
+    "game": "Destiny 2",
+    "supported_languages":"2",
+    "current_Price":"59.90",
+    "inital_Price":"59.90"},
+{   
+    "game": "Cyberpunk 2077",
+    "supported_languages":"9",
+    "current_Price":"49.90",
+    "inital_Price":"29.90"},
 {
-    "stockprice":"122",
-    "date":"15.2.23"},
-{
-    "stockprice":"124",
-    "date":"14.3.23"
+    "game": "The Witcher 3",
+    "supported_languages":"12",
+    "current_Price":"89.90",
+    "inital_Price":"19.90"
 }
 ]
 }; //die Variable wird später durch die Response ersetzt
 
-var data = jsonfile.jsonarray.map(function(e){
-    return e.stockprice;
+var supportedLanguages = jsonfile.jsonarray.map(function(e){
+    return e.supported_languages;
+});
+var currentPrice = jsonfile.jsonarray.map(function(e){
+    return e.current_Price;
+});
+var initialPrice = jsonfile.jsonarray.map(function(e){
+    return e.inital_Price;
 });
 var labels = jsonfile.jsonarray.map(function(e){
-    return e.date;
+    return e.game;
 });
+
+const data = {
+    labels: labels,
+    datasets:
+     [
+       {
+        label: 'unterstützte Sprachen',
+        data: supportedLanguages,
+        stack: 'Stack 0'
+       }, {
+        label: 'jetziger Preis',
+        data: currentPrice,
+        stack: 'Stack 1'
+
+       }, {
+        label: 'initialer Preis',
+        data: initialPrice,
+        stack: 'Stack 2'
+    }
+  ]
+}
+
 
 var ctx = document.getElementById('d2');
 var config = {
-    type: 'line',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'birthdates',
-            data: data
-        }]
+    type: 'bar',
+    data: data,
+    options: {
+        responsive: true,
+        ineteraction: {
+            intersect: false
+        },
+        scales: {
+            
+           
+        }
     }
 }
 

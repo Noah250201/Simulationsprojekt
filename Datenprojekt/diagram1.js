@@ -21,7 +21,7 @@ var data1 = jsonfile.jsonarray.map(function(e){
 var data2 = jsonfile.jsonarray.map(function(e){
     return e.googleViewCount;
 });
-var labels = jsonfile.jsonarray.map(function(e){
+var initialPrice = jsonfile.jsonarray.map(function(e){
     return e.date;
 });
 
@@ -29,7 +29,7 @@ var ctx = document.getElementById('d1');
 var config = {
     type: 'line',
     data: {
-        labels: labels,
+        labels: initialPrice,
         datasets: [{
             label: 'Stock Prices',
             data: data1,
