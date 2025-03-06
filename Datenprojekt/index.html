@@ -31,10 +31,10 @@
         <div class="main-content" id="main_content_one">
             <span class="close" onclick="closePopup('popup_one')">&times;</span>
             <div> 
-                <canvas id="d1"></canvas>  
+                <canvas id="d3"></canvas>  
             </div>
             
-            <script type="module" src="diagram1.js"></script>
+            <script type="module" src="diagram3.js"></script>
         </div>
 
         <!-- Einstellungen-Container -->
@@ -67,7 +67,11 @@
     <div class="popup-content popup-content-2">
         <div class="main-content" id="main_content_two">
             <span class="close" onclick="closePopup('popup_two')">&times;</span>
-            <p>Content for Diagram 2</p>
+            <div> 
+                <canvas id="d2"></canvas>  
+            </div>
+            
+            <script type="module" src="diagram2.js"></script>
         </div>
 
         <!-- Einstellungen-Container -->
@@ -100,7 +104,11 @@
     <div class="popup-content popup-content-3">
         <div class="main-content" id="main_content_three">
             <span class="close" onclick="closePopup('popup_three')">&times;</span>
-            <p>Content for Diagram 3</p>
+            <div> 
+                <canvas id="d1"></canvas>  
+            </div>
+            
+            <script type="module" src="diagram1.js"></script>
         </div>
 
         <!-- Einstellungen-Container -->
@@ -131,6 +139,8 @@
 
 <script type="text/javascript" src="main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js"></script>
 </body>
 </html>
 
