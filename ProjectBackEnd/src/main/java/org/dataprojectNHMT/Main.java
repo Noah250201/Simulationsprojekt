@@ -2,21 +2,23 @@ package org.dataprojectNHMT;
 
 import io.javalin.Javalin;
 import org.dataprojectNHMT.controller.GoogleTrendController;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.DefaultServlet;
+import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.net.URI;
 
 public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Javalin app = Javalin.create().get("/", ctx -> ctx.result("No Whitelable Error, because Hello World")).start(8080);
         log.info("Javalin has been initialized.");
         setup(app);
-        initializeHtml();
+        startingJetty();
     }
 
     private static void setup(Javalin app){
@@ -26,21 +28,25 @@ public class Main {
         log.info("javalin REST-Endpoints have been setup.");
     }
 
-    private static void initializeHtml(){
-        try {
-            File htmlFile = new File("../Datenprojekt/index.html");
+    private static void startingJetty() throws Exception {
+        int port = 4200;
 
-            if (!Desktop.isDesktopSupported()) {
-                log.error("Desktop-Funktionalität wird nicht unterstützt.");
-            } else if (!htmlFile.exists()) {
-                log.error("File at this location not found: \"{}\"", htmlFile.getAbsolutePath());
-            } else {
-                Desktop desktop = Desktop.getDesktop();
-                desktop.open(htmlFile);
-                log.info("HTML-File has been opened");
-            }
-        } catch (IOException e) {
-            log.error("Desktop failed to open file.",e);
-        }
+        log.debug("Creating a Jetty server on port {}", port);
+        Server server = new Server(port);
+
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+
+        String resourceBase = "../Datenprojekt";
+        context.setResourceBase(resourceBase);
+        context.addServlet(DefaultServlet.class, "/");
+
+        server.start();
+        log.info("Server started at http://localhost:{}", port);
+
+        Desktop desktop = Desktop.getDesktop();
+        desktop.browse(URI.create("http://localhost:" + port));
+        log.info("Browser opened at address http://localhost:{}",port);
     }
 }
