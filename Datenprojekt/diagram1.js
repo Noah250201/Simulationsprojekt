@@ -15,30 +15,32 @@ var jsonfile = {
 ]
 }; //variable will be replaced by the response later
 
-var data1 = jsonfile.jsonarray.map(function(e){
+var stockPrice = jsonfile.jsonarray.map(function(e){
     return e.stockprice;
 });
-var data2 = jsonfile.jsonarray.map(function(e){
+var googleViewCount = jsonfile.jsonarray.map(function(e){
     return e.googleViewCount;
 });
-var initialPrice = jsonfile.jsonarray.map(function(e){
+var date = jsonfile.jsonarray.map(function(e){
     return e.date;
 });
+
+                                                                                                              
 
 var ctx = document.getElementById('d1');
 var config = {
     type: 'line',
     data: {
-        labels: initialPrice,
+        labels: date,
         datasets: [{
             label: 'Stock Prices',
-            data: data1,
+            data: stockPrice,
             yAxisID: 'y',
             borderColor: 'blue',
             fill: false
         }, {
             label: 'Google View Count',
-            data: data2,
+            data: googleViewCount,
             yAxisID: 'y1',
             borderColor: 'red',
             fill: false
@@ -51,6 +53,12 @@ var config = {
           intersect: false,
         },
         stacked: false,
+        ticks: {
+          beginAtZero: true,
+          font: {
+              size: 14,
+          }
+      },
         scales: {
           y: {
             type: 'linear',
