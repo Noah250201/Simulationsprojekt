@@ -12,7 +12,12 @@ public class RESTServerController {
     private final Javalin server;
 
     public RESTServerController(int port) {
-        server = Javalin.create().start(port);
+        server = Javalin.create(
+                config -> config.bundledPlugins.enableCors(
+                        cors -> cors.addRule(
+                                rule -> rule.allowHost("http://localhost:4200"))));
+
+        server.start(port);
         log.info("Started Back-End Server on port {}", port);
 
         setupRestEndpoints();
