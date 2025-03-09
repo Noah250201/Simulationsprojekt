@@ -33,7 +33,7 @@ var config = {
 }
 
 function resizeCanvas() {
-    let canvas = document.getElementById('d1');
+    let canvas = document.getElementById('d3');
     if (canvas) {
         canvas.width = canvas.parentElement.clientWidth;
         canvas.height = canvas.parentElement.clientHeight;
