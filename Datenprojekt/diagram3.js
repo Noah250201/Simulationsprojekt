@@ -32,4 +32,16 @@ var config = {
     }
 }
 
+function resizeCanvas() {
+    let canvas = document.getElementById('d1');
+    if (canvas) {
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
+    }
+  }
+  
+  resizeCanvas();
+  
+  window.addEventListener('resize', resizeCanvas);
+
 var chart = new Chart(ctx, config);
