@@ -25,7 +25,7 @@ var supportedLanguages = jsonfile.jsonarray.map(function(e){
 var currentPrice = jsonfile.jsonarray.map(function(e){
     return e.current_Price;
 });
-var initialPrice = jsonfile.jsonarray.map(function(e){
+var date = jsonfile.jsonarray.map(function(e){
     return e.inital_Price;
 });
 var labels = jsonfile.jsonarray.map(function(e){
@@ -47,7 +47,7 @@ const data = {
 
        }, {
         label: 'initialer Preis',
-        data: initialPrice,
+        data: date,
         stack: 'Stack 2'
     }
   ]
@@ -63,9 +63,11 @@ var config = {
         ineteraction: {
             intersect: false
         },
-        scales: {
-            
-           
+        ticks: {
+            beginAtZero: true,
+            font: {
+                size: 14,
+            }
         }
     }
 }
