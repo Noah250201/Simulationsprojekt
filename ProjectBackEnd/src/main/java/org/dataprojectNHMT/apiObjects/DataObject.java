@@ -1,4 +1,4 @@
-package org.dataprojectNHMT.jsonObjects;
+package org.dataprojectNHMT.apiObjects;
 
 public interface DataObject {
     String toJson();

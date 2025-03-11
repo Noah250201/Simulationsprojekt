@@ -1,17 +1,19 @@
-package org.dataprojectNHMT.jsonObjects;
+package org.dataprojectNHMT.apiObjects;
 
 import java.time.LocalDate;
 
-public class DiagramOneDataObject implements DataObject{
+public class DiagramThreeDataObject implements DataObject{
     double stockprice;
     LocalDate date;
-    long googleViewCount;
+    String game;
+    int averagePlayers;
 
     public String toJson() {
         return "{" +
                 "\"stockprice\": \"" + stockprice + "\"" +
                 "\"date\": \"" + date + "\"" +
-                "\"googleViewCount\": \"" + googleViewCount + "\"" +
+                "\"game\": \"" + game + "\"" +
+                "\"averagePlayers\": \"" + averagePlayers + "\"" +
                 "}";
     }
 }

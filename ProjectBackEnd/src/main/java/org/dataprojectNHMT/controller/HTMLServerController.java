@@ -14,32 +14,32 @@ public class HTMLServerController {
 
     private static final Logger log = LoggerFactory.getLogger(HTMLServerController.class);
 
-    private final int port;
-
     private final Server server;
 
     public HTMLServerController(int port) {
-        this.port = port;
-
-        this.server = new Server(port);
+        this.server = setupServer(port);
         log.debug("Started Front-End Server on port {}", port);
 
-        setupServer();
-        startServer();
-        openBrowser();
+        startServer(port);
+
+        openBrowser(port);
     }
 
-    private void setupServer() {
+    private Server setupServer(int port) {
+        Server restServer =  new Server(port);
+
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        server.setHandler(context);
+        restServer.setHandler(context);
 
-        String resourceBase = "../Datenprojekt";
-        context.setResourceBase(resourceBase);
+        String frontEndLocation = "../Datenprojekt";
+        context.setResourceBase(frontEndLocation);
         context.addServlet(DefaultServlet.class, "/");
+
+        return restServer;
     }
 
-    private void startServer() {
+    private void startServer(int port) {
         try {
             server.start();
             log.info("Front-End Server started at http://localhost:{}", port);
@@ -48,12 +48,11 @@ public class HTMLServerController {
         }
     }
 
-    private void openBrowser() {
+    private void openBrowser(int port) {
         try {
             Desktop desktop = Desktop.getDesktop();
             desktop.browse(URI.create("http://localhost:" + port));
             log.info("Browser opened at address http://localhost:{}", port);
-
         } catch (IOException e) {
             log.error("Failed to open browser at http://localhost:{}", port, e);
         }

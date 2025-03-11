@@ -1,16 +1,16 @@
-package org.dataprojectNHMT.database;
+package org.dataprojectNHMT.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
-public class DatabaseConnection {
-    private static final Logger log = LoggerFactory.getLogger(DatabaseConnection.class);
+public class DatabaseController {
+    private static final Logger log = LoggerFactory.getLogger(DatabaseController.class);
 
     private Connection connection;
 
-    public DatabaseConnection() {
+    public DatabaseController() {
         String databaseUrl = "jdbc:h2:mem:datenprojekt";
         try {
             connection = DriverManager.getConnection(databaseUrl);

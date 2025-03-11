@@ -12,22 +12,28 @@ public class RESTServerController {
     private final Javalin server;
 
     public RESTServerController(int port) {
-        server = Javalin.create(
-                config -> config.bundledPlugins.enableCors(
-                        cors -> cors.addRule(
-                                rule -> rule.allowHost("http://localhost:4200"))));
-
-        server.start(port);
+        this.server = setupServer(port);
         log.info("Started Back-End Server on port {}", port);
 
         setupRestEndpoints();
         log.info("Front-End Server REST-Endpoints have been setup.");
+    }
+
+    private Javalin setupServer(int port) {
+        Javalin app = Javalin.create(
+                config -> config.bundledPlugins.enableCors(
+                        cors -> cors.addRule(
+                                rule -> rule.allowHost("http://localhost:4200"))));
+
+        app.start(port);
+        return app;
     }
     
     private void setupRestEndpoints() {
         server.get("/", endpoint -> endpoint.result("No Whitelable Error, because Hello World"));
         
         GoogleTrendService googleTrendService = new GoogleTrendService();
-        server.get("/trendData", endpoint -> endpoint.result(googleTrendService.getTrendsData()));
+        server.get("/trendData",
+                endpoint -> endpoint.result(googleTrendService.getTrendsData()));
     }
 }
