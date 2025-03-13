@@ -1,6 +1,6 @@
 package org.dataprojectNHMT.dtos;
 
-public class DiagramTwoDTO implements diagramDTO {
+public class DiagramTwoDTO implements DiagramDTO {
     String game;
     int supportedLanguages;
     double currentPrice;

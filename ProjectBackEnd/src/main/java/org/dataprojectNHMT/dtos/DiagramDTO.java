@@ -1,5 +1,5 @@
 package org.dataprojectNHMT.dtos;
 
-public interface diagramDTO {
+public interface DiagramDTO {
     String toJson();
 }
