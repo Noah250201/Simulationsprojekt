@@ -2,31 +2,31 @@
 var jsonfile = {
 "jsonarray": [{
     "game": "Destiny 2",
-    "supported_languages":"2",
-    "current_Price":"59.90",
-    "inital_Price":"59.90"},
+    "supportedLanguages":"2",
+    "currentPrice":"59.90",
+    "initalPrice":"59.90"},
 {   
     "game": "Cyberpunk 2077",
-    "supported_languages":"9",
-    "current_Price":"49.90",
-    "inital_Price":"29.90"},
+    "supportedLanguages":"9",
+    "currentPrice":"49.90",
+    "initalPrice":"29.90"},
 {
     "game": "The Witcher 3",
-    "supported_languages":"12",
-    "current_Price":"89.90",
-    "inital_Price":"19.90"
+    "supportedLanguages":"12",
+    "currentPrice":"89.90",
+    "initalPrice":"19.90"
 }
 ]
-}; //die Variable wird später durch die Response ersetzt
+}; //variable will be replaced by the response later
 
 var supportedLanguages = jsonfile.jsonarray.map(function(e){
-    return e.supported_languages;
+    return e.supportedLanguages;
 });
 var currentPrice = jsonfile.jsonarray.map(function(e){
-    return e.current_Price;
+    return e.currentPrice;
 });
 var date = jsonfile.jsonarray.map(function(e){
-    return e.inital_Price;
+    return e.initalPrice;
 });
 var labels = jsonfile.jsonarray.map(function(e){
     return e.game;
@@ -41,12 +41,12 @@ const data = {
         data: supportedLanguages,
         stack: 'Stack 0'
        }, {
-        label: 'jetziger Preis',
+        label: 'jetziger Preis in €',
         data: currentPrice,
         stack: 'Stack 1'
 
        }, {
-        label: 'initialer Preis',
+        label: 'initialer Preis in €',
         data: date,
         stack: 'Stack 2'
     }
