@@ -1,6 +1,6 @@
-package org.dataprojectNHMT.apiObjects;
+package org.dataprojectNHMT.dtos;
 
-public class DiagramTwoDataObject implements DataObject{
+public class DiagramTwoDTO implements diagramDTO {
     String game;
     int supportedLanguages;
     double currentPrice;

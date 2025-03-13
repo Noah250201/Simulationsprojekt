@@ -1,8 +1,8 @@
-package org.dataprojectNHMT.apiObjects;
+package org.dataprojectNHMT.dtos;
 
 import java.time.LocalDate;
 
-public class DiagramOneDataObject implements DataObject{
+public class DiagramOneDTO implements diagramDTO {
     double stockprice;
     LocalDate date;
     long googleViewCount;

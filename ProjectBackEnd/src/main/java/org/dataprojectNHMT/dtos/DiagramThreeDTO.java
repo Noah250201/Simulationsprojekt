@@ -1,8 +1,8 @@
-package org.dataprojectNHMT.apiObjects;
+package org.dataprojectNHMT.dtos;
 
 import java.time.LocalDate;
 
-public class DiagramThreeDataObject implements DataObject{
+public class DiagramThreeDTO implements diagramDTO {
     double stockprice;
     LocalDate date;
     String game;
