@@ -28,26 +28,26 @@ public class DatabaseController {
                 "symbol varchar(20) NOT NULL," +
                 "date DATE NOT NULL," +
                 "price double);");
-        statement.executeQuery("Create Table publisher( " +
+        statement.execute("Create Table publisher( " +
                 "publisherID integer primary key," +
-                "publisherName String Not Null," +
+                "publisherName varchar(20) Not Null," +
                 "courseID fk" +
                 "analytics fk" +
                 "publisher_games fk);");
-        statement.executeQuery("Create Table publisher_games(" +
+        statement.execute("Create Table publisher_games(" +
                 "publisher_gamesID integer pk," +
                 "publisherID fk" +
                 "gamesID fk);");
-        statement.executeQuery("Create Table analytics(" +
+        statement.execute("Create Table analytics(" +
                 "analyticsID integer primary key," +
                 "month Date NOT NULL," +
                 "searches integer," +
                 "gameID" +
                 "publisherID);");
-        statement.executeQuery("Create Table games(" +
+        statement.execute("Create Table games(" +
                 "gameID integer primary key," +
-                "gameName String," +
-                "owners String," +
+                "gameName varchar(20)," +
+                "owners varchar(20)," +
                 "initialPrice double," +
                 "currentPrice double," +
                 "avgPlayerForever integer," +
@@ -56,4 +56,12 @@ public class DatabaseController {
                 "publisher_games ID" +
                 "analytics ID);");
     }
+
+    //get publisher nach Namen
+
+    //get game nach Namen
+
+    //get analytics nach datum
+
+    //get course nach datum
 }

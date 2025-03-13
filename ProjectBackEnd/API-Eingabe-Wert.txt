@@ -1,0 +1,12 @@
+Diagramm 1:
+	Publisher
+	array games
+	interval (täglich, wöchentlich, vielleicht monatlich)
+
+Diagramm 2:
+	String Games
+
+Diagramm 3:
+	Startdatum
+	Enddatum
+	Publisher

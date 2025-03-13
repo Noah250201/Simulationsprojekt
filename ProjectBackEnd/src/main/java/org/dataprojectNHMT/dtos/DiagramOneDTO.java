@@ -5,13 +5,15 @@ import java.time.LocalDate;
 public class DiagramOneDTO implements DiagramDTO {
     double stockprice;
     LocalDate date;
-    long googleViewCount;
+    String game;
+    int averagePlayers;
 
     public String toJson() {
         return "{" +
                 "\"stockprice\": \"" + stockprice + "\"" +
                 "\"date\": \"" + date + "\"" +
-                "\"googleViewCount\": \"" + googleViewCount + "\"" +
+                "\"game\": \"" + game + "\"" +
+                "\"averagePlayers\": \"" + averagePlayers + "\"" +
                 "}";
     }
 }
