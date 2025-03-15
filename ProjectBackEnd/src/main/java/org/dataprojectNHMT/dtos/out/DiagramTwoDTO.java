@@ -1,4 +1,4 @@
-package org.dataprojectNHMT.dtos;
+package org.dataprojectNHMT.dtos.out;
 
 public class DiagramTwoDTO implements DiagramDTO {
     String game;

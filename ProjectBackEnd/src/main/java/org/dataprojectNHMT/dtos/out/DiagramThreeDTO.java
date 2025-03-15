@@ -1,4 +1,4 @@
-package org.dataprojectNHMT.dtos;
+package org.dataprojectNHMT.dtos.out;
 
 import java.time.LocalDate;
 

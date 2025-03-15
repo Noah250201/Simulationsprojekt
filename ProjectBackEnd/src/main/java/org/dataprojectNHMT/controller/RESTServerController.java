@@ -30,13 +30,13 @@ public class RESTServerController {
     }
     
     private void setupRestEndpoints() {
-        server.get("/", endpoint -> endpoint.result("No Whitelable Error, because Hello World"));
+        server.get("/", context -> context.result("No Whitelable Error, because Hello World"));
         
         GoogleTrendService googleTrendService = new GoogleTrendService();
         server.get("/trendData",
-                endpoint -> endpoint.result(googleTrendService.getTrendsData()));
+                context -> context.result(googleTrendService.getTrendsData()));
 
-        server.delete("/stop", endpoint -> endpoint.result("stopping..."));
-        server.after("/stop", endpoint -> System.exit(0));
+        server.delete("/stop", context -> context.result("stopping..."));
+        server.after("/stop", context -> System.exit(0));
     }
 }
