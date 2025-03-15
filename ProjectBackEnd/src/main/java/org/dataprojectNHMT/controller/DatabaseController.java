@@ -1,5 +1,6 @@
 package org.dataprojectNHMT.controller;
 
+import org.dataprojectNHMT.entitys.GameEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,9 +58,12 @@ public class DatabaseController {
                 "analytics ID);");
     }
 
-    //get publisher nach Namen
+    public GameEntity getGame(String name) {
+        //TODO
+        return new GameEntity();
+    }
 
-    //get game nach Namen
+    //get publisher nach Namen
 
     //get analytics nach datum
 
