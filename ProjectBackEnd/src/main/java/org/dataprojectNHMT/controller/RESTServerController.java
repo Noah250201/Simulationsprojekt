@@ -36,11 +36,7 @@ public class RESTServerController {
         server.get("/trendData",
                 endpoint -> endpoint.result(googleTrendService.getTrendsData()));
 
-        server.delete("/stop", endpoint -> endpoint.result(stopProgram()));
-    }
-
-    private String stopProgram() {
-        System.exit(0);
-        return "finished";
+        server.delete("/stop", endpoint -> endpoint.result("stopping..."));
+        server.after("/stop", endpoint -> System.exit(0));
     }
 }
