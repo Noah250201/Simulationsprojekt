@@ -2,9 +2,11 @@ package org.dataprojectNHMT.dtos.in;
 
 import org.dataprojectNHMT.util.Interval;
 
+import java.util.List;
+
 public class InputOneDTO {
     private String publisher;
-    private String[] games;
+    private List<String> games;
     private Interval interval;
 
     public String getPublisher() {
@@ -15,11 +17,11 @@ public class InputOneDTO {
         this.publisher = publisher;
     }
 
-    public String[] getGames() {
+    public List<String> getGames() {
         return games;
     }
 
-    public void setGames(String[] games) {
+    public void setGames(List<String> games) {
         this.games = games;
     }
 

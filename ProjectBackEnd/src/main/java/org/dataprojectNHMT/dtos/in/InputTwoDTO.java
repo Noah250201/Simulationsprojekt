@@ -1,13 +1,15 @@
 package org.dataprojectNHMT.dtos.in;
 
-public class InputTwoDTO {
-    private String[] games;
+import java.util.List;
 
-    public String[] getGames() {
+public class InputTwoDTO {
+    private List<String> games;
+
+    public List<String> getGames() {
         return games;
     }
 
-    public void setGames(String[] games) {
+    public void setGames(List<String> games) {
         this.games = games;
     }
 }
