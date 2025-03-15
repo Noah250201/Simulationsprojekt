@@ -1,10 +1,14 @@
 package org.dataprojectNHMT.controller;
 
+import org.dataprojectNHMT.entitys.AnalyticsEntity;
+import org.dataprojectNHMT.entitys.CourseEntity;
 import org.dataprojectNHMT.entitys.GameEntity;
+import org.dataprojectNHMT.entitys.PublisherEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class DatabaseController {
     private static final Logger log = LoggerFactory.getLogger(DatabaseController.class);
@@ -63,9 +67,23 @@ public class DatabaseController {
         return new GameEntity();
     }
 
-    //get publisher nach Namen
+    public PublisherEntity getPublisher(String name) {
+        //TODO
+        return new PublisherEntity();
+    }
 
-    //get analytics nach datum
+    public CourseEntity getCourse(LocalDate date, PublisherEntity publisher) {
+        //TODO
+        return new CourseEntity();
+    }
 
-    //get course nach datum
+    public AnalyticsEntity getAnalytics(LocalDate date, PublisherEntity publisher) {
+        //TODO
+        return new AnalyticsEntity();
+    }
+
+    public AnalyticsEntity getAnalytics(LocalDate date, GameEntity game) {
+        //TODO
+        return new AnalyticsEntity();
+    }
 }
