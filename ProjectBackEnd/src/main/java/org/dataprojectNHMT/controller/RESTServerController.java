@@ -1,7 +1,12 @@
 package org.dataprojectNHMT.controller;
 
 import io.javalin.Javalin;
-import org.dataprojectNHMT.services.GoogleTrendService;
+import org.dataprojectNHMT.dtos.in.InputOneDTO;
+import org.dataprojectNHMT.dtos.in.InputThreeDTO;
+import org.dataprojectNHMT.dtos.in.InputTwoDTO;
+import org.dataprojectNHMT.services.DiagramOneService;
+import org.dataprojectNHMT.services.DiagramThreeService;
+import org.dataprojectNHMT.services.DiagramTwoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +15,10 @@ public class RESTServerController {
     private static final Logger log = LoggerFactory.getLogger(RESTServerController.class);
     
     private final Javalin server;
+    private final DatabaseController db;
 
     public RESTServerController(int port, DatabaseController db) {
+        this.db = db;
         this.server = setupServer(port);
         log.info("Started Back-End Server on port {}", port);
 
@@ -30,13 +37,29 @@ public class RESTServerController {
     }
     
     private void setupRestEndpoints() {
-        server.get("/", context -> context.result("No Whitelable Error, because Hello World"));
-        
-        GoogleTrendService googleTrendService = new GoogleTrendService();
-        server.get("/trendData",
-                context -> context.result(googleTrendService.getTrendsData()));
-
+        //Endpoint to stop Back-End
         server.delete("/stop", context -> context.result("stopping..."));
         server.after("/stop", context -> System.exit(0));
+
+        //Endpoint for Diagram One
+        DiagramOneService serviceOne = new DiagramOneService(db);
+        server.post("/diagramOne",
+                context -> context.result(
+                        serviceOne.getDiagram(
+                                context.bodyAsClass(InputOneDTO.class))));
+
+        //Endpoint for Diagram Two
+        DiagramTwoService serviceTwo = new DiagramTwoService(db);
+        server.post("/diagramTwo",
+                context -> context.result(
+                        serviceTwo.getDiagram(
+                                context.bodyAsClass(InputTwoDTO.class))));
+
+        //Endpoint for Diagram Three
+        DiagramThreeService serviceThree = new DiagramThreeService(db);
+        server.post("diagramThree",
+                context -> context.result(
+                        serviceThree.getDiagram(
+                                context.bodyAsClass(InputThreeDTO.class))));
     }
 }
