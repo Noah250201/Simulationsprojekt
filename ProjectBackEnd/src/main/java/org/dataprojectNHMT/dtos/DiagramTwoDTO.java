@@ -9,9 +9,9 @@ public class DiagramTwoDTO implements DiagramDTO {
     public String toJson() {
         return "{" +
                 "\"game\": \"" + game + "\"" +
-                "\"supported_languages\": \"" + supportedLanguages + "\"" +
-                "\"current_Price\": \"" + currentPrice + "\"" +
-                "\"initial_Price\": \"" + initialPrice + "\"" +
+                "\"supportedLanguages\": \"" + supportedLanguages + "\"" +
+                "\"currentPrice\": \"" + currentPrice + "\"" +
+                "\"initialPrice\": \"" + initialPrice + "\"" +
                 "}";
     }
 }
