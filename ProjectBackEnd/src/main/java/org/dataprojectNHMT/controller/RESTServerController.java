@@ -11,7 +11,7 @@ public class RESTServerController {
     
     private final Javalin server;
 
-    public RESTServerController(int port) {
+    public RESTServerController(int port, DatabaseController db) {
         this.server = setupServer(port);
         log.info("Started Back-End Server on port {}", port);
 
@@ -35,5 +35,12 @@ public class RESTServerController {
         GoogleTrendService googleTrendService = new GoogleTrendService();
         server.get("/trendData",
                 endpoint -> endpoint.result(googleTrendService.getTrendsData()));
+
+        server.delete("/stop", endpoint -> endpoint.result(stopProgram()));
+    }
+
+    private String stopProgram() {
+        System.exit(0);
+        return "finished";
     }
 }

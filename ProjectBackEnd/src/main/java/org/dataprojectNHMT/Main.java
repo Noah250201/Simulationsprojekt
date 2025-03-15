@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         DatabaseController db = new DatabaseController();
-        RESTServerController rest = new RESTServerController(8080);
+        RESTServerController rest = new RESTServerController(8080, db);
         log.debug("Finished creating RESTServerController.");
         HTMLServerController html = new HTMLServerController(4200);
         log.debug("Finished creating HTMLServerController.");
