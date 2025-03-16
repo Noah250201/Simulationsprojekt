@@ -65,16 +65,16 @@ function saveSettings(popupId) {
         values[dropdown.id] = dropdown.value;
     });
 
-    let endpoint;
+    let endpoint = 'http://localhost:8080/diagram';
     switch (popupId) {
         case 'popup_one':
-            endpoint = '/save-settings-one'; // Controller for Diagram 1
+            endpoint = endpoint + 'One'; // Controller for Diagram 1
             break;
         case 'popup_two':
-            endpoint = '/save-settings-two'; // Controller for Diagram 2
+            endpoint = endpoint + 'Two'; // Controller for Diagram 2
             break;
         case 'popup_three':
-            endpoint = '/save-settings-three'; // Controller for Diagram 3
+            endpoint = endpoint + 'Three'; // Controller for Diagram 3
             break;
         default:
             console.error(`Unknown popupId: ${popupId}`);

@@ -57,7 +57,7 @@ public class RESTServerController {
 
         //Endpoint for Diagram Three
         DiagramThreeService serviceThree = new DiagramThreeService(db);
-        server.post("diagramThree",
+        server.post("/diagramThree",
                 context -> context.result(
                         serviceThree.getDiagram(
                                 context.bodyAsClass(InputThreeDTO.class))));
