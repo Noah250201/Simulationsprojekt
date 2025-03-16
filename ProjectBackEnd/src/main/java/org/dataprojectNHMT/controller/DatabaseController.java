@@ -17,7 +17,7 @@ public class DatabaseController {
 
     private final String selectPublisher="SELECT * From publisher WHERE publisherName =";
     private final String selectGame="SELECT * FROM game WHERE gameName=";
-    private final String selectAnalytics="SELECT * FROM analytics WHERE date=";
+    private final String selectAnalytics="SELECT * FROM analytics WHERE analyticsMonth=";
     private final String selectStock ="SELECT * FROM stock WHERE date=";
 
 
@@ -63,15 +63,15 @@ public class DatabaseController {
                 "publisherID INTEGER," +
                 "gameID INTEGER," +
                 "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID)," +
-                "FOREIGN KEY (gameID) REFERENCES game(gameID));"
+                "FOREIGN KEY (gameID) REFERENCES games(gameID));"
         );
         statement.execute("Create Table analytics(" +
                 "analyticsID INTEGER PRIMARY KEY," +
-                "month String NOT NULL," +
+                "analyticsMonth VARCHAR(20) NOT NULL," +
                 "searches INTEGER," +
                 "gameID INTEGER," +
                 "publisherID INTEGER," +
-                "FOREIGN KEY (gameID) REFERENCES game(gameID)," +
+                "FOREIGN KEY (gameID) REFERENCES games(gameID)," +
                 "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID));"
         );
 
@@ -129,14 +129,14 @@ public class DatabaseController {
     public AnalyticsEntity getAnalyticsByDateAndPublisher(LocalDate analyticsSearchDate, PublisherEntity searchPublisher) {
 
         AnalyticsEntity analyticsEntity=new AnalyticsEntity();
-        String selectAnalyticsByName = selectAnalytics + "'" + analyticsSearchDate + "' AND publisherID=" + searchPublisher.getPublisherID();
+        String selectAnalyticsByName = selectAnalytics + "'" + analyticsSearchDate.getMonthValue() + "' AND publisherID=" + searchPublisher.getPublisherID();
 
         try( PreparedStatement preparedStatement = connection.prepareStatement(selectAnalyticsByName);
              ResultSet resultSet = preparedStatement.executeQuery()
         ) {
             if(resultSet.next()){
                 analyticsEntity.setAnalyticsID( resultSet.getInt("analyticsID"));
-                analyticsEntity.setMonth( resultSet.getString("month"));
+                analyticsEntity.setMonth( resultSet.getString("analyticsMonth"));
                 analyticsEntity.setSearches(resultSet.getInt("searches"));
                 analyticsEntity.setGameID(resultSet.getInt("gameID"));
                 analyticsEntity.setPublisherID(resultSet.getInt("publisherID"));
