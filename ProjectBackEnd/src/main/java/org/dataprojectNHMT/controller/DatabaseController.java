@@ -35,6 +35,21 @@ public class DatabaseController {
     private void setup() throws SQLException {
         Statement statement = connection.createStatement();
 
+        statement.execute("Create Table publisher( " +
+                "publisherID INTEGER PRIMARY KEY," +
+                "publisherName VARCHAR(100) Not Null,"
+        );
+        statement.execute("Create Table games(" +
+                "gameID INTEGER PRIMARY KEY," +
+                "gameName VARCHAR(100)," +
+                "owner VARCHAR(100)," +
+                "initialPrice DOUBLE," +
+                "currentPrice DOUBLE," +
+                "averagedPlayersForever INTEGER," +
+                "avgPlayerLastTwoWeeks INTEGER ," +
+                "supportedLanguage INTEGER,"+
+                "scoreRank INTEGER);"
+        );
         statement.execute("Create Table stock(" +
                 "stockID INTEGER PRIMARY KEY," +
                 "publisherID INTEGER,"+
@@ -43,10 +58,6 @@ public class DatabaseController {
                 "price DOUBLE," +
                 "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID));"
         );
-        statement.execute("Create Table publisher( " +
-                "publisherID INTEGER PRIMARY KEY," +
-                "publisherName VARCHAR(100) Not Null,"
-              );
         statement.execute("Create Table publisher_games(" +
                 "publisher_gamesID INTEGER PRIMARY KEY," +
                 "publisherID INTEGER," +
@@ -63,17 +74,6 @@ public class DatabaseController {
                 "FOREIGN KEY (gameID) REFERENCES game(gameID)," +
                 "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID));"
         );
-        statement.execute("Create Table games(" +
-                "gameID INTEGER PRIMARY KEY," +
-                "gameName VARCHAR(100)," +
-                "owner VARCHAR(100)," +
-                "initialPrice DOUBLE," +
-                "currentPrice DOUBLE," +
-                "averagedPlayersForever INTEGER," +
-                "avgPlayerLastTwoWeeks INTEGER ," +
-                "supportedLanguage INTEGER,"+
-                "scoreRank INTEGER);"
-                );
 
         statement.close();
     }
