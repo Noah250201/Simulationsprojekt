@@ -74,6 +74,8 @@ public class DatabaseController {
                 "supportedLanguage INTEGER,"+
                 "scoreRank INTEGER);"
                 );
+
+        statement.close();
     }
 
     public PublisherEntity getPublisherByName(String publisherSearchName)  {
