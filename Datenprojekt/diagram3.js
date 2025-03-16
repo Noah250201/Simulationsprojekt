@@ -1,26 +1,26 @@
 
 var jsonfile = {
 "jsonarray": [{
-    "stockprice":"112",
+    "stockPrice":"112",
     "date":"16.1.23",
     "game":"Assassins Creed: Valhalla",
     "averagePlayers":"1000"},
 {
-    "stockprice":"1000",
+    "stockPrice":"1000",
     "date":"17.1.23",
     "game":"Assassins Creed: Odyssey",
     "averagePlayers":"2500"},
 {
-    "stockprice":"122",
+    "stockPrice":"122",
     "date":"18.1.23",
     "game":"Assassins Creed: Origins",
     "averagePlayers":"1750"
 }
 ]
-}; //die Variable wird später durch die Response ersetzt
+}; //variable will be replaced by the response later
 
 var stockPrice = jsonfile.jsonarray.map(function(e){
-    return e.stockprice;
+    return e.stockPrice;
 });
 var date = jsonfile.jsonarray.map(function(e){
     return e.date;

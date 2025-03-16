@@ -6,12 +6,16 @@ import org.dataprojectNHMT.controller.DatabaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDate;
+
 public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
+    public static final LocalDate lastDateOnRecord = LocalDate.now();
+
     public static void main(String[] args) {
         DatabaseController db = new DatabaseController();
-        RESTServerController rest = new RESTServerController(8080);
+        RESTServerController rest = new RESTServerController(8080, db);
         log.debug("Finished creating RESTServerController.");
         HTMLServerController html = new HTMLServerController(4200);
         log.debug("Finished creating HTMLServerController.");

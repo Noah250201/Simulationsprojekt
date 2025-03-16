@@ -1,22 +1,22 @@
 
 var jsonfile = {
 "jsonarray": [{
-    "stockprice":"112",
+    "stockPrice":"112",
     "date":"16.1.23",
     "googleViewCount":"1000"},
 {
-    "stockprice":"122",
+    "stockPrice":"122",
     "date":"15.2.23",
     "googleViewCount":"2000"},
 {
-    "stockprice":"124",
+    "stockPrice":"124",
     "date":"14.3.23"
 }
 ]
 }; //variable will be replaced by the response later
 
 var stockPrice = jsonfile.jsonarray.map(function(e){
-    return e.stockprice;
+    return e.stockPrice;
 });
 var googleViewCount = jsonfile.jsonarray.map(function(e){
     return e.googleViewCount;

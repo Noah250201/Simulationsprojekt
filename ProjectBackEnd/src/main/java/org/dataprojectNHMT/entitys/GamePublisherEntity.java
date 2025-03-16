@@ -1,9 +1,20 @@
 package org.dataprojectNHMT.entitys;
 
 public class GamePublisherEntity {
-    //ForeignKey / one PrimaryKey
+    //Primary Key
+    private int gamePublisherID;
+
+    //ForeignKey
     private int publisherID;
     private int gameID;
+
+    public int getGamePublisherID() {
+        return gamePublisherID;
+    }
+
+    public void setGamePublisherID(int gamePublisherID) {
+        this.gamePublisherID = gamePublisherID;
+    }
 
     public int getPublisherID() {
         return publisherID;
