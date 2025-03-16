@@ -15,6 +15,13 @@ public class DatabaseController {
 
     private Connection connection;
 
+    private final String selectPublisher="SELECT * From Publisher WHERE publisherName =";
+    private final String selectGame="SELECT * FROM Game WHERE gameName=";
+    private final String selectAnalytics="SELECT * FROM Analytics WHERE analyticsName=";
+    private final String selectCourse="SELECT * FROM Course WHERE date=";
+
+
+
     public DatabaseController() {
         String databaseUrl = "jdbc:h2:mem:datenprojekt";
         try {
@@ -29,61 +36,134 @@ public class DatabaseController {
         Statement statement = connection.createStatement();
 
         statement.execute("Create Table stock(" +
-                "stockID integer primary key," +
-                "symbol varchar(20) NOT NULL," +
+                "stockID INTEGER PRIMARY KEY," +
+                "publisherID INTEGER,"+
+                "symbol VARCHAR(20) NOT NULL," +
                 "date DATE NOT NULL," +
-                "price double);");
+                "price DOUBLE," +
+                "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID));"
+        );
         statement.execute("Create Table publisher( " +
-                "publisherID integer primary key," +
-                "publisherName varchar(20) Not Null," +
-                "courseID fk" +
-                "analytics fk" +
-                "publisher_games fk);");
+                "publisherID INTEGER PRIMARY KEY," +
+                "publisherName VARCHAR(100) Not Null,"
+              );
         statement.execute("Create Table publisher_games(" +
-                "publisher_gamesID integer pk," +
-                "publisherID fk" +
-                "gamesID fk);");
+                "publisher_gamesID INTEGER PRIMARY KEY," +
+                "publisherID INTEGER," +
+                "gameID INTEGER," +
+                "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID)," +
+                "FOREIGN KEY (gameID) REFERENCES game(gameID));"
+        );
         statement.execute("Create Table analytics(" +
-                "analyticsID integer primary key," +
-                "month Date NOT NULL," +
-                "searches integer," +
-                "gameID" +
-                "publisherID);");
+                "analyticsID INTEGER PRIMARY KEY," +
+                "month String NOT NULL," +
+                "searches INTEGER," +
+                "gameID INTEGER," +
+                "publisherID INTEGER," +
+                "FOREIGN KEY (gameID) REFERENCES game(gameID)," +
+                "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID));"
+        );
         statement.execute("Create Table games(" +
-                "gameID integer primary key," +
-                "gameName varchar(20)," +
-                "owners varchar(20)," +
-                "initialPrice double," +
-                "currentPrice double," +
-                "avgPlayerForever integer," +
-                "avgPlayerLast2Weeks integer ," +
-                "scoreRank integer," +
-                "publisher_games ID" +
-                "analytics ID);");
+                "gameID INTEGER PRIMARY KEY," +
+                "gameName VARCHAR(100)," +
+                "owner VARCHAR(100)," +
+                "initialPrice DOUBLE," +
+                "currentPrice DOUBLE," +
+                "averagedPlayersForever  INTEGER," +
+                "avgPlayerLastTwoWeeks  INTEGER ," +
+                "supportedLanguage INTEGER,"+
+                "scoreRank INTEGER);"
+                );
     }
 
-    public GameEntity getGame(String name) {
-        //TODO
-        return new GameEntity();
+    public PublisherEntity getPublisherByName(String publisherSearchName)  {
+
+      PublisherEntity publisherEntity = new PublisherEntity();
+      String selectPublisherByName =  selectPublisher + "'" + publisherSearchName + "'" ;
+
+      try(
+      PreparedStatement preparedStatement = connection.prepareStatement(selectPublisherByName);
+      ResultSet resultSet = preparedStatement.executeQuery();
+      ) {
+
+          if (resultSet.next()) {
+              publisherEntity.setPublisherID( resultSet.getInt("publisherID"));
+              publisherEntity.setPublisherName(resultSet.getString("publisherName"));
+          }
+      } catch (SQLException e) {
+         log.error("Failed to get Publisher with name {}", publisherSearchName,e);
+      }
+
+        return  publisherEntity;
     }
 
-    public PublisherEntity getPublisher(String name) {
-        //TODO
-        return new PublisherEntity();
+    public GameEntity getGameByName(String gameSearchName ) throws SQLException {
+
+        GameEntity gameEntity= new GameEntity();
+        String selectGameByName =  selectGame +"'" + gameSearchName + "'";
+
+        try(
+        PreparedStatement preparedStatement = connection.prepareStatement(selectGameByName);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        ) {
+            if (resultSet.next()) {
+                gameEntity.setGameID(resultSet.getInt("gameID"));
+                gameEntity.setGameName(resultSet.getString("gameName"));
+                gameEntity.setOwner(resultSet.getString("owner"));
+                gameEntity.setAveragedPlayersForever(resultSet.getInt("averagedPlayersForever"));
+                gameEntity.setAveragedPlayersLastTwoWeeks(resultSet.getInt("averagedPlayersLastTwoWeeks"));
+                gameEntity.setCurrentPrice(resultSet.getDouble("currentPrice"));
+                gameEntity.setInitialPrice(resultSet.getInt("initialPrice"));
+                gameEntity.setScoreRank(resultSet.getLong("scoreRank"));
+                gameEntity.setSupportedLanguage(resultSet.getInt("supportedLanguage"));
+
+            }
+        }catch (SQLException e) {
+            log.error("Failed to get Game with name {}", gameSearchName,e);
+        }
+        return  gameEntity;
     }
 
-    public CourseEntity getCourse(LocalDate date, PublisherEntity publisher) {
-        //TODO
-        return new CourseEntity();
+    public AnalyticsEntity getAnalyticsByName(String analyticsSearchName) throws SQLException {
+
+        AnalyticsEntity analyticsEntity=new AnalyticsEntity();
+        String selectAnalyticsByName =  selectAnalytics + "'" + analyticsSearchName + "'";
+
+        try( PreparedStatement preparedStatement = connection.prepareStatement(selectAnalyticsByName);
+             ResultSet resultSet = preparedStatement.executeQuery();)
+        {
+            if(resultSet.next()){
+                analyticsEntity.setAnalyticsID( resultSet.getInt("AnalyticsID"));
+                analyticsEntity.setMonth( resultSet.getString("month"));
+                analyticsEntity.setSearches(resultSet.getInt("searches"));
+                analyticsEntity.setGameID(resultSet.getInt("gameID"));
+                analyticsEntity.setPublisherID(resultSet.getInt("publisherID"));
+            }
+        }catch (SQLException e){
+        log.error("Failed to get Game with name {}", analyticsSearchName,e);
     }
 
-    public AnalyticsEntity getAnalytics(LocalDate date, PublisherEntity publisher) {
-        //TODO
-        return new AnalyticsEntity();
+        return  analyticsEntity;
     }
 
-    public AnalyticsEntity getAnalytics(LocalDate date, GameEntity game) {
-        //TODO
-        return new AnalyticsEntity();
+    public CourseEntity getStockByName(LocalDate stockSearchDate , PublisherEntity searchPublisher ) throws SQLException {
+
+        CourseEntity courseEntity = new CourseEntity();
+        String selectCourseByName =  selectCourse + "'" + stockSearchDate + "' AND publisherID=" + searchPublisher.getPublisherID();
+        try (
+            PreparedStatement preparedStatement = connection.prepareStatement(selectCourseByName);
+            ResultSet resultSet = preparedStatement.executeQuery();)
+        {
+            if(resultSet.next()){
+                courseEntity.setCourseID(resultSet.getInt("CourseID"));
+                courseEntity.setDate(resultSet.getDate("date").toLocalDate());
+                courseEntity.setPublisherID(resultSet.getInt("publisherID"));
+                courseEntity.setPrice(resultSet.getDouble("price"));
+        }
+        } catch (SQLException e) {
+            log.error("Failed to get Stock with Publisher {}", searchPublisher,e);
+        }
+
+        return  courseEntity;
     }
 }
