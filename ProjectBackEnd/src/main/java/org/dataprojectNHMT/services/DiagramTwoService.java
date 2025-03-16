@@ -22,7 +22,7 @@ public class DiagramTwoService {
         List<DiagramDTO> list = new ArrayList<>();
         input.getGames().forEach(
                 game ->{
-                    GameEntity entity = db.getGame(game);
+                    GameEntity entity = db.getGameByName(game);
                     DiagramTwoDTO dto = new DiagramTwoDTO();
                     dto.setGame(entity.getGameName());
                     dto.setCurrentPrice(entity.getCurrentPrice());

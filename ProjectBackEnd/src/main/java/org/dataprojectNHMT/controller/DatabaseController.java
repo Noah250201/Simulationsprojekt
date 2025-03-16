@@ -1,7 +1,7 @@
 package org.dataprojectNHMT.controller;
 
 import org.dataprojectNHMT.entitys.AnalyticsEntity;
-import org.dataprojectNHMT.entitys.CourseEntity;
+import org.dataprojectNHMT.entitys.StockEntity;
 import org.dataprojectNHMT.entitys.GameEntity;
 import org.dataprojectNHMT.entitys.PublisherEntity;
 import org.slf4j.Logger;
@@ -15,10 +15,10 @@ public class DatabaseController {
 
     private Connection connection;
 
-    private final String selectPublisher="SELECT * From Publisher WHERE publisherName =";
-    private final String selectGame="SELECT * FROM Game WHERE gameName=";
-    private final String selectAnalytics="SELECT * FROM Analytics WHERE analyticsName=";
-    private final String selectCourse="SELECT * FROM Course WHERE date=";
+    private final String selectPublisher="SELECT * From publisher WHERE publisherName =";
+    private final String selectGame="SELECT * FROM game WHERE gameName=";
+    private final String selectAnalytics="SELECT * FROM analytics WHERE date=";
+    private final String selectStock ="SELECT * FROM stock WHERE date=";
 
 
 
@@ -69,8 +69,8 @@ public class DatabaseController {
                 "owner VARCHAR(100)," +
                 "initialPrice DOUBLE," +
                 "currentPrice DOUBLE," +
-                "averagedPlayersForever  INTEGER," +
-                "avgPlayerLastTwoWeeks  INTEGER ," +
+                "averagedPlayersForever INTEGER," +
+                "avgPlayerLastTwoWeeks INTEGER ," +
                 "supportedLanguage INTEGER,"+
                 "scoreRank INTEGER);"
                 );
@@ -78,14 +78,14 @@ public class DatabaseController {
         statement.close();
     }
 
-    public PublisherEntity getPublisherByName(String publisherSearchName)  {
+    public PublisherEntity getPublisherByName(String publisherSearchName) {
 
       PublisherEntity publisherEntity = new PublisherEntity();
-      String selectPublisherByName =  selectPublisher + "'" + publisherSearchName + "'" ;
+      String selectPublisherByName = selectPublisher + "'" + publisherSearchName + "'" ;
 
       try(
       PreparedStatement preparedStatement = connection.prepareStatement(selectPublisherByName);
-      ResultSet resultSet = preparedStatement.executeQuery();
+      ResultSet resultSet = preparedStatement.executeQuery()
       ) {
 
           if (resultSet.next()) {
@@ -96,17 +96,17 @@ public class DatabaseController {
          log.error("Failed to get Publisher with name {}", publisherSearchName,e);
       }
 
-        return  publisherEntity;
+        return publisherEntity;
     }
 
-    public GameEntity getGameByName(String gameSearchName ) throws SQLException {
+    public GameEntity getGameByName(String gameSearchName) {
 
         GameEntity gameEntity= new GameEntity();
-        String selectGameByName =  selectGame +"'" + gameSearchName + "'";
+        String selectGameByName = selectGame + "'" + gameSearchName + "'";
 
         try(
         PreparedStatement preparedStatement = connection.prepareStatement(selectGameByName);
-        ResultSet resultSet = preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement.executeQuery()
         ) {
             if (resultSet.next()) {
                 gameEntity.setGameID(resultSet.getInt("gameID"));
@@ -120,52 +120,52 @@ public class DatabaseController {
                 gameEntity.setSupportedLanguage(resultSet.getInt("supportedLanguage"));
 
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             log.error("Failed to get Game with name {}", gameSearchName,e);
         }
-        return  gameEntity;
+        return gameEntity;
     }
 
-    public AnalyticsEntity getAnalyticsByName(String analyticsSearchName) throws SQLException {
+    public AnalyticsEntity getAnalyticsByDateAndPublisher(LocalDate analyticsSearchDate, PublisherEntity searchPublisher) {
 
         AnalyticsEntity analyticsEntity=new AnalyticsEntity();
-        String selectAnalyticsByName =  selectAnalytics + "'" + analyticsSearchName + "'";
+        String selectAnalyticsByName = selectAnalytics + "'" + analyticsSearchDate + "' AND publisherID=" + searchPublisher.getPublisherID();
 
         try( PreparedStatement preparedStatement = connection.prepareStatement(selectAnalyticsByName);
-             ResultSet resultSet = preparedStatement.executeQuery();)
-        {
+             ResultSet resultSet = preparedStatement.executeQuery()
+        ) {
             if(resultSet.next()){
-                analyticsEntity.setAnalyticsID( resultSet.getInt("AnalyticsID"));
+                analyticsEntity.setAnalyticsID( resultSet.getInt("analyticsID"));
                 analyticsEntity.setMonth( resultSet.getString("month"));
                 analyticsEntity.setSearches(resultSet.getInt("searches"));
                 analyticsEntity.setGameID(resultSet.getInt("gameID"));
                 analyticsEntity.setPublisherID(resultSet.getInt("publisherID"));
             }
-        }catch (SQLException e){
-        log.error("Failed to get Game with name {}", analyticsSearchName,e);
+        } catch (SQLException e){
+        log.error("Failed to get Game with Publisher {}", searchPublisher,e);
     }
 
-        return  analyticsEntity;
+        return analyticsEntity;
     }
 
-    public CourseEntity getStockByName(LocalDate stockSearchDate , PublisherEntity searchPublisher ) throws SQLException {
+    public StockEntity getStockByDateAndPublisher(LocalDate stockSearchDate, PublisherEntity searchPublisher) {
 
-        CourseEntity courseEntity = new CourseEntity();
-        String selectCourseByName =  selectCourse + "'" + stockSearchDate + "' AND publisherID=" + searchPublisher.getPublisherID();
+        StockEntity stockEntity = new StockEntity();
+        String selectStockByName = selectStock + "'" + stockSearchDate + "' AND publisherID=" + searchPublisher.getPublisherID();
         try (
-            PreparedStatement preparedStatement = connection.prepareStatement(selectCourseByName);
-            ResultSet resultSet = preparedStatement.executeQuery();)
-        {
+            PreparedStatement preparedStatement = connection.prepareStatement(selectStockByName);
+            ResultSet resultSet = preparedStatement.executeQuery()
+        ) {
             if(resultSet.next()){
-                courseEntity.setCourseID(resultSet.getInt("CourseID"));
-                courseEntity.setDate(resultSet.getDate("date").toLocalDate());
-                courseEntity.setPublisherID(resultSet.getInt("publisherID"));
-                courseEntity.setPrice(resultSet.getDouble("price"));
+                stockEntity.setStockID(resultSet.getInt("stockID"));
+                stockEntity.setDate(resultSet.getDate("date").toLocalDate());
+                stockEntity.setPublisherID(resultSet.getInt("publisherID"));
+                stockEntity.setPrice(resultSet.getDouble("price"));
         }
         } catch (SQLException e) {
             log.error("Failed to get Stock with Publisher {}", searchPublisher,e);
         }
 
-        return  courseEntity;
+        return stockEntity;
     }
 }
