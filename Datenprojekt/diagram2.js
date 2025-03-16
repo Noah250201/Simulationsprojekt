@@ -2,17 +2,17 @@
 var jsonfile = {
 "jsonarray": [{
     "game": "Destiny 2",
-    "supportedLanguages":"2",
+    
     "currentPrice":"59.90",
     "initalPrice":"59.90"},
 {   
     "game": "Cyberpunk 2077",
-    "supportedLanguages":"9",
+    
     "currentPrice":"49.90",
     "initalPrice":"29.90"},
 {
     "game": "The Witcher 3",
-    "supportedLanguages":"12",
+    
     "currentPrice":"89.90",
     "initalPrice":"19.90"
 }
@@ -36,11 +36,7 @@ const data = {
     labels: labels,
     datasets:
      [
-       {
-        label: 'unterstützte Sprachen',
-        data: supportedLanguages,
-        stack: 'Stack 0'
-       }, {
+        {
         label: 'jetziger Preis in €',
         data: currentPrice,
         stack: 'Stack 1'
