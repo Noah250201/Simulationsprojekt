@@ -2,9 +2,9 @@ package org.dataprojectNHMT.entitys;
 
 import java.time.LocalDate;
 
-public class CourseEntity {
+public class StockEntity {
     //PrimaryKey
-    private int courseID;
+    private int stockID;
 
     private double price;
     private LocalDate date;
@@ -13,12 +13,12 @@ public class CourseEntity {
     //ForeignKey
     private int publisherID;
 
-    public int getCourseID() {
-        return courseID;
+    public int getStockID() {
+        return stockID;
     }
 
-    public void setCourseID(int courseID) {
-        this.courseID = courseID;
+    public void setStockID(int stockID) {
+        this.stockID = stockID;
     }
 
     public double getPrice() {
