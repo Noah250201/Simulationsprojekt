@@ -37,7 +37,7 @@ public class DatabaseController {
 
         statement.execute("Create Table publisher( " +
                 "publisherID INTEGER PRIMARY KEY," +
-                "publisherName VARCHAR(100) Not Null,"
+                "publisherName VARCHAR(100) Not Null);"
         );
         statement.execute("Create Table games(" +
                 "gameID INTEGER PRIMARY KEY," +
