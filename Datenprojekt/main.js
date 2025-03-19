@@ -109,3 +109,55 @@ fetch(endpoint, { // endpoint controller in backend set in switchcase above
 console.log(`Sent settings for ${popupId} to ${endpoint}:`, payload); 
 
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('diagram_one').addEventListener('click', () => openPopup('popup_one'));
+    document.getElementById('diagram_two').addEventListener('click', () => openPopup('popup_two'));
+    document.getElementById('diagram_three').addEventListener('click', () => openPopup('popup_three'));
+
+    setupPublisherDropdown('dropdown1_1', 'popup_one');
+    setupPublisherDropdown('dropdown2_1', 'popup_two');
+    setupPublisherDropdown('dropdown3_1', 'popup_three');
+
+    setupDatePickers(['dropdown1_2', 'dropdown1_3', 'dropdown3_2', 'dropdown3_3']);
+});
+
+function setupPublisherDropdown(dropdownId, popupId) {
+    document.getElementById(dropdownId).addEventListener('change', function () {
+        fetchGamesForPublisher(this.value, popupId);
+    });
+}
+
+function fetchGamesForPublisher(publisher, popupId) {
+    fetch(`/get-games?publisher=${encodeURIComponent(publisher)}`)
+        .then(response => response.json())
+        .then(data => {
+            populateGameDropdowns(popupId, data.games);
+        })
+        .catch(error => console.error('Fehler beim Abrufen der Spiele:', error));
+}
+
+function populateGameDropdowns(popupId, games) {
+    for (let i = 3; i <= 8; i++) {
+        let dropdown = document.getElementById(`${popupId.replace('popup_', 'dropdown')}_${i}`);
+        if (dropdown) {
+            dropdown.innerHTML = '';
+            games.forEach(game => {
+                let option = document.createElement('option');
+                option.value = game;
+                option.textContent = game;
+                dropdown.appendChild(option);
+            });
+        }
+    }
+}
+
+function setupDatePickers(ids) {
+    ids.forEach(id => {
+        let input = document.createElement('input');
+        input.type = 'date';
+        input.id = id;
+        let select = document.getElementById(id);
+        select.parentNode.replaceChild(input, select);
+    });
+}

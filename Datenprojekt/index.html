@@ -40,18 +40,35 @@
         <!-- Einstellungen-Container -->
         <div class="settings-content" id="settings_content_one">
             <h2>Einstellungen für Diagram 1</h2>
-            <label for="dropdown1_1">Option 1:</label>
+            <label for="dropdown1_1">Publisher:</label>
             <select id="dropdown1_1" class="select_1">
-                <option value="value1">Wert 1</option>
-                <option value="value2">Wert 2</option>
-                <option value="value3">Wert 3</option>
+                <option value="EA">EA</option>
+                <option value="Ubisoft">Ubisoft</option>
+                <option value="value3">NetEase</option>
+                <option value="NetEase">SquareEnix</option>
+                <option value="SquareEnix">BandaiNamco</option>
             </select>
             <br/>
-            <label for="dropdown1_2">Option 2:</label>
-            <select id="dropdown1_2" class="select_1">
-                <option value="valueA">Wert A</option>
-                <option value="valueB">Wert B</option>
-            </select>
+            <label for="dropdown1_2">Von:</label>
+            <input type="date" id="dropdown1_2" class="select_1">
+            <br/>
+            <label for="dropdown1_3">Bis:</label>
+            <input type="date" id="dropdown1_3" class="select_1">
+            <br/>
+            <label for="dropdown1_4">Spiel 1</label>
+            <select id="dropdown1_4" class="select_1"></select>
+            <br/>
+            <label for="dropdown1_5">Spiel 2</label>
+            <select id="dropdown1_5" class="select_1"></select>
+            <br/>
+            <label for="dropdown1_6">Spiel 3</label>
+            <select id="dropdown1_6" class="select_1"></select>
+            <br/>
+            <label for="dropdown1_7">Spiel 4</label>
+            <select id="dropdown1_7" class="select_1"></select>
+            <br/>
+            <label for="dropdown1_8">Spiel 5</label>
+            <select id="dropdown1_8" class="select_1"></select>
             <br/>
             <button onclick="saveSettings('popup_one')" class="button_pink">Speichern</button>
             <button onclick="closeSettings('popup_one')" class="button_pink">Zurück</button>
@@ -77,18 +94,36 @@
         <!-- Einstellungen-Container -->
         <div class="settings-content" id="settings_content_two">
             <h2>Einstellungen für Diagram 2</h2>
-            <label for="dropdown2_1">Option 1:</label>
+            <label for="dropdown2_1">Publisher:</label>
             <select id="dropdown2_1" class="select_2">
-                <option value="alpha">Alpha</option>
-                <option value="beta">Beta</option>
-                <option value="gamma">Gamma</option>
+                <option value="EA">EA</option>
+                <option value="Ubisoft">Ubisoft</option>
+                <option value="NetEase">NetEase</option>
+                <option value="SquareEnix">SquareEnix</option>
+                <option value="BandaiNamco">BandaiNamco</option>
             </select>
             <br/>
-            <label for="dropdown2_2">Option 2:</label>
+            <label for="dropdown2_2">Interval:</label>
             <select id="dropdown2_2" class="select_2">
-                <option value="delta">Delta</option>
-                <option value="epsilon">Epsilon</option>
+                <option value="Täglich">Täglich</option>
+                <option value="Wöchentlich">Wöchentlich</option>
+                <option value="Monatlich">Monatlich</option>
             </select>
+            <br/>
+            <label for="dropdown2_3">Spiel 1</label>
+            <select id="dropdown1_3" class="select_1"></select>
+            <br/>
+            <label for="dropdown2_4">Spiel 2</label>
+            <select id="dropdown1_4" class="select_1"></select>
+            <br/>
+            <label for="dropdown2_5">Spiel 3</label>
+            <select id="dropdown1_5" class="select_1"></select>
+            <br/>
+            <label for="dropdown2_6">Spiel 4</label>
+            <select id="dropdown2_6" class="select_1"></select>
+            <br/>
+            <label for="dropdown2_7">Spiel 5</label>
+            <select id="dropdown2_7" class="select_1"></select>
             <br/>
             <button onclick="saveSettings('popup_two')" class="button_green">Speichern</button>
             <button onclick="closeSettings('popup_two')" class="button_green">Zurück</button>
@@ -114,18 +149,20 @@
         <!-- Einstellungen-Container -->
         <div class="settings-content" id="settings_content_three">
             <h2>Einstellungen für Diagram 3</h2>
-            <label for="dropdown3_1">Option 1:</label>
+            <label for="dropdown3_1">Publisher:</label>
             <select id="dropdown3_1" class="select_3">
-                <option value="red">Rot</option>
-                <option value="blue">Blau</option>
-                <option value="green">Grün</option>
+                <option value="EA">EA</option>
+                <option value="Ubisoft">Ubisoft</option>
+                <option value="NetEase">NetEase</option>
+                <option value="SquareEnix">SquareEnix</option>
+                <option value="BandaiNamco">BandaiNamco</option>
             </select>
             <br/>
-            <label for="dropdown3_2">Option 2:</label>
-            <select id="dropdown3_2" class="select_3">
-                <option value="circle">Kreis</option>
-                <option value="square">Quadrat</option>
-            </select>
+            <label for="dropdown3_2">Von:</label>
+            <input type="date" id="dropdown3_2" class="select_1">
+            <br/>
+            <label for="dropdown3_3">Bis:</label>
+            <input type="date" id="dropdown3_3" class="select_1">
             <br/>
             <button onclick="saveSettings('popup_three')" class="button_blue">Speichern</button>
             <button onclick="closeSettings('popup_three')" class="button_blue">Zurück</button>

@@ -67,7 +67,6 @@ p, h1, h2{
     height: 25rem;
     cursor: pointer;
     margin: 10px;
-    min-width: 40rem;
 }
 
 @media (max-width: 1024px) {
