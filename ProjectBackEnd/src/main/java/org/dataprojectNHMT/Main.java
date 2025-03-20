@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    public static final LocalDate lastDateOnRecord = LocalDate.now();
+    public static final LocalDate lastDateOnRecord = LocalDate.parse("2025-03-16");
 
     public static void main(String[] args) {
         DatabaseController db = new DatabaseController();
