@@ -16,7 +16,7 @@ public class DatabaseController {
     private Connection connection;
 
     private final String selectPublisher="SELECT * From publisher WHERE publisherName =";
-    private final String selectGame="SELECT * FROM game WHERE gameName=";
+    private final String selectGame="SELECT * FROM games WHERE gameName=";
     private final String selectAnalytics="SELECT * FROM analytics WHERE analyticsMonth=";
     private final String selectStock ="SELECT * FROM stock WHERE date=";
 
@@ -36,7 +36,7 @@ public class DatabaseController {
         Statement statement = connection.createStatement();
 
         statement.execute("Create Table publisher( " +
-                "publisherID INTEGER PRIMARY KEY," +
+                "publisherID INTEGER AUTO_INCREMENT PRIMARY KEY," +
                 "publisherName VARCHAR(100) Not Null);"
         );
         statement.execute("Create Table games(" +
@@ -51,7 +51,7 @@ public class DatabaseController {
                 "scoreRank INTEGER);"
         );
         statement.execute("Create Table stock(" +
-                "stockID INTEGER PRIMARY KEY," +
+                "stockID INTEGER AUTO_INCREMENT PRIMARY KEY," +
                 "publisherID INTEGER,"+
                 "symbol VARCHAR(20) NOT NULL," +
                 "date DATE NOT NULL," +
@@ -59,14 +59,14 @@ public class DatabaseController {
                 "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID));"
         );
         statement.execute("Create Table publisher_games(" +
-                "publisher_gamesID INTEGER PRIMARY KEY," +
+                "publisher_gamesID INTEGER AUTO_INCREMENT PRIMARY KEY," +
                 "publisherID INTEGER," +
                 "gameID INTEGER," +
                 "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID)," +
                 "FOREIGN KEY (gameID) REFERENCES games(gameID));"
         );
         statement.execute("Create Table analytics(" +
-                "analyticsID INTEGER PRIMARY KEY," +
+                "analyticsID INTEGER AUTO_INCREMENT PRIMARY KEY," +
                 "analyticsMonth VARCHAR(20) NOT NULL," +
                 "searches INTEGER," +
                 "gameID INTEGER," +
@@ -76,6 +76,60 @@ public class DatabaseController {
         );
 
         statement.close();
+    }
+
+    public void insertAnalytics(AnalyticsEntity entity){
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("INSERT INTO analytics (analyticsMonth,searches,gameID,publisherID) VALUES(" +
+                    "'" + entity.getMonth() + "'," +
+                    entity.getSearches() + "," +
+                    entity.getGameID() + "," +
+                    entity.getPublisherID() + ");");
+        } catch (SQLException e) {
+            log.error("Failed to create new AnalyticsEntity",e);
+        }
+    }
+
+    public void insertGame(GameEntity game, PublisherEntity publisher) {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("INSERT INTO games VALUES(" +
+                    game.getGameID() + "," +
+                    "'" + game.getGameName() + "'," +
+                    "'" + game.getOwner() + "'," +
+                    game.getInitialPrice() + "," +
+                    game.getCurrentPrice() + "," +
+                    game.getAveragedPlayersForever() + "," +
+                    game.getAveragedPlayersLastTwoWeeks() + "," +
+                    game.getSupportedLanguage() + "," +
+                    game.getScoreRank() + ");");
+
+            statement.execute("INSERT INTO publisher_games (publisherID,gameID) VALUES(" +
+                    publisher.getPublisherID() + "," +
+                    game.getGameID() + ");");
+        } catch (SQLException e) {
+            log.error("Failed to create new GameEntity",e);
+        }
+    }
+
+    public void insertPublisher(PublisherEntity publisher) {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("INSERT INTO publisher (publisherName) VALUES('" +
+                    publisher.getPublisherName() + "');");
+        } catch (SQLException e) {
+            log.error("Failed to create new PublisherEntity",e);
+        }
+    }
+
+    public void insertStock(StockEntity entity) {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("INSERT INTO stock (price,date,symbol,publisherID) VALUES(" +
+                    entity.getPrice() + "," +
+                    "'" + entity.getDate() + "'," +
+                    "'" + entity.getSymbol() + "'," +
+                    entity.getPublisherID() + ");");
+        } catch (SQLException e) {
+            log.error("Failed to create new PublisherEntity",e);
+        }
     }
 
     public PublisherEntity getPublisherByName(String publisherSearchName) {
@@ -113,7 +167,7 @@ public class DatabaseController {
                 gameEntity.setGameName(resultSet.getString("gameName"));
                 gameEntity.setOwner(resultSet.getString("owner"));
                 gameEntity.setAveragedPlayersForever(resultSet.getInt("averagedPlayersForever"));
-                gameEntity.setAveragedPlayersLastTwoWeeks(resultSet.getInt("averagedPlayersLastTwoWeeks"));
+                gameEntity.setAveragedPlayersLastTwoWeeks(resultSet.getInt("avgPlayerLastTwoWeeks"));
                 gameEntity.setCurrentPrice(resultSet.getDouble("currentPrice"));
                 gameEntity.setInitialPrice(resultSet.getInt("initialPrice"));
                 gameEntity.setScoreRank(resultSet.getLong("scoreRank"));
