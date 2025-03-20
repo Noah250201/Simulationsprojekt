@@ -8,7 +8,7 @@ public class StockEntity {
 
     private double price;
     private LocalDate date;
-//    private Object symbol; //???
+    private String symbol;
 
     //ForeignKey
     private int publisherID;
@@ -37,13 +37,13 @@ public class StockEntity {
         this.date = date;
     }
 
-//    public Object getSymbol() {
-//        return symbol;
-//    }
-//
-//    public void setSymbol(Object symbol) {
-//        this.symbol = symbol;
-//    }
+    public Object getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
 
     public int getPublisherID() {
         return publisherID;
