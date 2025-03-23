@@ -14,14 +14,14 @@
     <div class="diagrams">
         <div class="top-diagrams">
             <div class="diagram" id="diagram_one">
-            <canvas id="Diagram1"></canvas>
+            <canvas id="d3_2"></canvas>
         </div>
         <div class="diagram" id="diagram_two">
-            <canvas id="Diagram2"></canvas>
+            <canvas id="d2_2"></canvas>
         </div>
     </div>           
         <div class="diagram-wide" id="diagram_three">
-            <canvas id="Diagram3"></canvas>
+            <canvas id="d1_2"></canvas>
         </div>
    </div>
 </div>
@@ -50,10 +50,10 @@
             </select>
             <br/>
             <label for="dropdown1_2">Von:</label>
-            <input type="date" id="dropdown1_2" class="select_1">
+            <input type="date" id="dropdown1_2" class="select_1" min="2024-03-23" max="2025-03-23" onkeydown="return false;">
             <br/>
             <label for="dropdown1_3">Bis:</label>
-            <input type="date" id="dropdown1_3" class="select_1">
+            <input type="date" id="dropdown1_3" class="select_1" min="2024-03-23" max="2025-03-23" onkeydown="return false;">
             <br/>
             <label for="dropdown1_4">Spiel 1</label>
             <select id="dropdown1_4" class="select_1"></select>
@@ -111,19 +111,19 @@
             </select>
             <br/>
             <label for="dropdown2_3">Spiel 1</label>
-            <select id="dropdown2_3" class="select_1"></select>
+            <select id="dropdown2_3" class="select_2"></select>
             <br/>
             <label for="dropdown2_4">Spiel 2</label>
-            <select id="dropdown2_4" class="select_1"></select>
+            <select id="dropdown2_4" class="select_2"></select>
             <br/>
             <label for="dropdown2_5">Spiel 3</label>
-            <select id="dropdown2_5" class="select_1"></select>
+            <select id="dropdown2_5" class="select_2"></select>
             <br/>
             <label for="dropdown2_6">Spiel 4</label>
-            <select id="dropdown2_6" class="select_1"></select>
+            <select id="dropdown2_6" class="select_2"></select>
             <br/>
             <label for="dropdown2_7">Spiel 5</label>
-            <select id="dropdown2_7" class="select_1"></select>
+            <select id="dropdown2_7" class="select_2"></select>
             <br/>
             <button onclick="saveSettings('popup_two')" class="button_green">Speichern</button>
             <button onclick="closeSettings('popup_two')" class="button_green">Zurück</button>
@@ -159,10 +159,10 @@
             </select>
             <br/>
             <label for="dropdown3_2">Von:</label>
-            <input type="date" id="dropdown3_2" class="select_1">
+            <input type="date" id="dropdown3_2" class="select_3" min="2024-03-23" max="2025-03-23" onkeydown="return false;">
             <br/>
             <label for="dropdown3_3">Bis:</label>
-            <input type="date" id="dropdown3_3" class="select_1">
+            <input type="date" id="dropdown3_3" class="select_3" min="2024-03-23" max="2025-03-23" onkeydown="return false;">
             <br/>
             <button onclick="saveSettings('popup_three')" class="button_blue">Speichern</button>
             <button onclick="closeSettings('popup_three')" class="button_blue">Zurück</button>

@@ -68,16 +68,25 @@ var config = {
     }
 }
 
-function resizeCanvas() {
-    let canvas = document.getElementById('d2');
+function resizeCanvas(canvas) {
     if (canvas) {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
     }
   }
   
-  resizeCanvas();
+  // Chart für das erste Canvas erstellen
+  var ctx1 = document.getElementById('d2');
+  resizeCanvas(ctx1);
+  var chart1 = new Chart(ctx1, config);
   
-  window.addEventListener('resize', resizeCanvas);
-
-var chart = new Chart(ctx, config);
+  // Chart für das zweite Canvas erstellen
+  var ctx2 = document.getElementById('d2_2');
+  resizeCanvas(ctx2);
+  var chart2 = new Chart(ctx2, config);
+  
+  // Bei Fenster-Resize beide Canvas-Größen anpassen
+  window.addEventListener('resize', function() {
+    resizeCanvas(ctx1);
+    resizeCanvas(ctx2);
+  });
