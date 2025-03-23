@@ -1,4 +1,4 @@
-function updateChartWithData(data, chartId) {
+function updateChartThreeWithData(data, chartId) {
     const jsonfile = data;
 
     var stockPrice = jsonfile.jsonarray.map(function(e) {

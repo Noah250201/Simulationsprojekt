@@ -60,9 +60,13 @@ function closeSettings(popupId) {
 function saveSettings(popupId) {
     
     const dropdowns = document.querySelectorAll(`#${popupId} select`);
+    const dateInputs = document.querySelectorAll(`#${popupId} input[type="date"]`);
     const values = {};
     dropdowns.forEach((dropdown) => {
         values[dropdown.id] = dropdown.value;
+    });
+    dateInputs.forEach((input) => {
+        values[input.id] = input.value;  // Datumswert korrekt erfassen
     });
 
     let endpoint = 'http://localhost:8080/diagram';
@@ -103,11 +107,11 @@ fetch(endpoint, { // endpoint controller in backend set in switchcase above
         console.log('Settings successfully saved:', data);
 
         if (popupId === 'popup_one') {
-            updateChartWithData(data, 'chart3');
+            updateChartThreeWithData(data, 'chart3');
         } else if (popupId === 'popup_two') {
-            updateChartWithData(data, 'chart2');
+            updateChartTwoWithData(data, 'chart2');
         } else if (popupId === 'popup_three') {
-            updateChartWithData(data, 'chart1');
+            updateChartOneWithData(data, 'chart1');
         }
     })
     .catch((error) => {

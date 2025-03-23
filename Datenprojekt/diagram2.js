@@ -1,5 +1,5 @@
 
-function updateChartWithData(data, chartId) {
+function updateChartTwoWithData(data, chartId) {
     const jsonfile = data;
 
     // Hole die Daten
@@ -20,9 +20,9 @@ function updateChartWithData(data, chartId) {
         return e.game;
     });
 
-    // Die Daten für das Diagramm
+
     const chartData = {
-        labels: labels, // Hier verwenden wir die Spiele als Labels
+        labels: labels,
         datasets: [
             {
                 label: 'Aktueller Preis in €',
@@ -37,7 +37,6 @@ function updateChartWithData(data, chartId) {
         ]
     };
 
-    // Konfiguration des Diagramms
     const config = {
         type: 'bar',
         data: chartData,
