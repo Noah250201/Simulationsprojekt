@@ -68,13 +68,13 @@ function saveSettings(popupId) {
     let endpoint = 'http://localhost:8080/diagram';
     switch (popupId) {
         case 'popup_one':
-            endpoint = endpoint + 'One'; // Controller for Diagram 1
+            endpoint = endpoint + 'Three'; // Controller for Diagram 1
             break;
         case 'popup_two':
             endpoint = endpoint + 'Two'; // Controller for Diagram 2
             break;
         case 'popup_three':
-            endpoint = endpoint + 'Three'; // Controller for Diagram 3
+            endpoint = endpoint + 'One'; // Controller for Diagram 3
             break;
         default:
             console.error(`Unknown popupId: ${popupId}`);
@@ -101,6 +101,14 @@ fetch(endpoint, { // endpoint controller in backend set in switchcase above
     })
     .then((data) => {
         console.log('Settings successfully saved:', data);
+
+        if (popupId === 'popup_one') {
+            updateChartWithData(data, 'chart3');
+        } else if (popupId === 'popup_two') {
+            updateChartWithData(data, 'chart2');
+        } else if (popupId === 'popup_three') {
+            updateChartWithData(data, 'chart1');
+        }
     })
     .catch((error) => {
         console.error('Error saving settings:', error); 

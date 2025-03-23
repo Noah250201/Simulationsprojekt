@@ -1,92 +1,98 @@
 
-var jsonfile = {
-"jsonarray": [{
-    "game": "Destiny 2",
-    
-    "currentPrice":"59.90",
-    "initalPrice":"59.90"},
-{   
-    "game": "Cyberpunk 2077",
-    
-    "currentPrice":"49.90",
-    "initalPrice":"29.90"},
-{
-    "game": "The Witcher 3",
-    
-    "currentPrice":"89.90",
-    "initalPrice":"19.90"
-}
-]
-}; //variable will be replaced by the response later
+function updateChartWithData(data, chartId) {
+    const jsonfile = data;
 
-var supportedLanguages = jsonfile.jsonarray.map(function(e){
-    return e.supportedLanguages;
-});
-var currentPrice = jsonfile.jsonarray.map(function(e){
-    return e.currentPrice;
-});
-var date = jsonfile.jsonarray.map(function(e){
-    return e.initalPrice;
-});
-var labels = jsonfile.jsonarray.map(function(e){
-    return e.game;
-});
+    // Hole die Daten
+    var currentPrice = jsonfile.jsonarray.map(function(e) {
+        return e.currentPrice;
+    });
 
-const data = {
-    labels: labels,
-    datasets:
-     [
-        {
-        label: 'jetziger Preis in €',
-        data: currentPrice,
-        stack: 'Stack 1'
+    var initialPrice = jsonfile.jsonarray.map(function(e) {
+        return e.initalPrice;
+    });
 
-       }, {
-        label: 'initialer Preis in €',
-        data: date,
-        stack: 'Stack 2'
-    }
-  ]
-}
+    // Hier gehe ich davon aus, dass es ein Feld "date" im JSON gibt, das du verwenden möchtest
+    var date = jsonfile.jsonarray.map(function(e) {
+        return e.date || "Kein Datum"; // Sicherstellen, dass ein Platzhalter verwendet wird, falls kein Datum vorhanden ist
+    });
 
+    var labels = jsonfile.jsonarray.map(function(e) {
+        return e.game;
+    });
 
-var ctx = document.getElementById('d2');
-var config = {
-    type: 'bar',
-    data: data,
-    options: {
-        responsive: true,
-        ineteraction: {
-            intersect: false
-        },
-        ticks: {
-            beginAtZero: true,
-            font: {
-                size: 14,
+    // Die Daten für das Diagramm
+    const chartData = {
+        labels: labels, // Hier verwenden wir die Spiele als Labels
+        datasets: [
+            {
+                label: 'Aktueller Preis in €',
+                data: currentPrice,
+                stack: 'Stack 1'
+            },
+            {
+                label: 'Initialer Preis in €',
+                data: initialPrice,
+                stack: 'Stack 2'
+            }
+        ]
+    };
+
+    // Konfiguration des Diagramms
+    const config = {
+        type: 'bar',
+        data: chartData,
+        options: {
+            responsive: true,
+            interaction: {
+                intersect: false
+            },
+            scales: {
+                x: {
+                    // Zeigt die Spiele an (labels)
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Spiele'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Preis (€)'
+                    }
+                }
+            },
+            ticks: {
+                beginAtZero: true,
+                font: {
+                    size: 14,
+                }
             }
         }
-    }
+    };
+
+    // Canvas für das Diagramm holen und es anpassen
+    var ctx1 = document.getElementById(chartId); // Hier wird die ID für das Canvas verwendet
+    resizeCanvas(ctx1);
+    var chart1 = new Chart(ctx1, config);
+
+    // Wenn du noch ein zweites Canvas hast (z.B. d2_2), dann das hier:
+    var ctx2 = document.getElementById(chartId + "_2");
+    resizeCanvas(ctx2);
+    var chart2 = new Chart(ctx2, config);
+
+    // Bei Fenstergröße-Änderungen die Größe der Diagramme anpassen
+    window.addEventListener('resize', function() {
+        resizeCanvas(ctx1);
+        resizeCanvas(ctx2);
+    });
 }
 
+// Hilfsfunktion, um die Größe des Canvas anzupassen
 function resizeCanvas(canvas) {
     if (canvas) {
-      canvas.width = canvas.parentElement.clientWidth;
-      canvas.height = canvas.parentElement.clientHeight;
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
     }
-  }
-  
-  // Chart für das erste Canvas erstellen
-  var ctx1 = document.getElementById('d2');
-  resizeCanvas(ctx1);
-  var chart1 = new Chart(ctx1, config);
-  
-  // Chart für das zweite Canvas erstellen
-  var ctx2 = document.getElementById('d2_2');
-  resizeCanvas(ctx2);
-  var chart2 = new Chart(ctx2, config);
-  
-  // Bei Fenster-Resize beide Canvas-Größen anpassen
-  window.addEventListener('resize', function() {
-    resizeCanvas(ctx1);
-    resizeCanvas(ctx2);
-  });
+}

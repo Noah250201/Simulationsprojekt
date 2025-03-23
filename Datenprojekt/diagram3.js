@@ -1,147 +1,131 @@
+function updateChartWithData(data, chartId) {
+    const jsonfile = data;
 
-var jsonfile = {
-"jsonarray": [{
-    "stockPrice":"112",
-    "date":"16.1.23",
-    "game":"Assassins Creed: Valhalla",
-    "averagePlayers":"1000"},
-{
-    "stockPrice":"1000",
-    "date":"17.1.23",
-    "game":"Assassins Creed: Odyssey",
-    "averagePlayers":"2500"},
-{
-    "stockPrice":"122",
-    "date":"18.1.23",
-    "game":"Assassins Creed: Origins",
-    "averagePlayers":"1750"
-}
-]
-}; //variable will be replaced by the response later
+    var stockPrice = jsonfile.jsonarray.map(function(e) {
+        return e.stockPrice;
+    });
 
-var stockPrice = jsonfile.jsonarray.map(function(e){
-    return e.stockPrice;
-});
-var date = jsonfile.jsonarray.map(function(e){
-    return e.date;
-});
-var game = jsonfile.jsonarray.map(function(e){
-    return e.game;
-});
-var averagePlayers = jsonfile.jsonarray.map(function(e){
-    return e.averagePlayers;
-});
+    var date = jsonfile.jsonarray.map(function(e) {
+        return e.date;
+    });
 
-var ctx = document.getElementById('d3');
-var config = {
-    type: 'bar',
-    data: {
-        labels: game,
+    var game = jsonfile.jsonarray.map(function(e) {
+        return e.game;
+    });
+
+    var averagePlayers = jsonfile.jsonarray.map(function(e) {
+        return e.averagePlayers;
+    });
+
+    // Daten für das Diagramm
+    const chartData = {
+        labels: game, // Die Spiele als Labels
         datasets: [
             {
                 label: 'Stock Preis',
                 data: stockPrice,
-                type: 'line',
+                type: 'line', // Linie für den Stock Preis
                 yAxisID: 'y1',
                 xAxisID: 'x1',
             },
             {
-            label: 'durchschnittliche Spieler der letzten zwei Wochen',
-            data: averagePlayers,
-            yAxisID: 'y',
-        }
-        
-    ]
+                label: 'Durchschnittliche Spieler',
+                data: averagePlayers,
+                yAxisID: 'y',
+            }
+        ]
+    };
 
-    },
-    options:{
-        responsive: true,
-        interaction: {
-          mode: 'index',
-          intersect: false,
-        },
-        stacked: false,
-        scales: {
-            y: {
-                type: 'linear',
-                display: true,
-                position: 'left',
-                title: {
+    // Diagramm-Konfiguration
+    const config = {
+        type: 'bar', // Balkendiagramm
+        data: chartData,
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            stacked: false,
+            scales: {
+                y: {
+                    type: 'linear',
                     display: true,
-                    text: 'durchschnittliche Spieler',
-                    font: {
-                        size: 20,
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: 'Durchschnittliche Spieler',
+                        font: {
+                            size: 20,
+                        }
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        font: {
+                            size: 14,
+                        }
                     }
                 },
-                ticks: {
-                    beginAtZero: true,
-                    font: {
-                        size: 14,
-                    }
-                }
-            },
-            y1: {
-                type: 'linear',
-                display: true,
-                position: 'right',
-                title: {
+                y1: {
+                    type: 'linear',
                     display: true,
-                    text: 'Stock Preis',
-                    font: {
-                        size: 20,
+                    position: 'right',
+                    title: {
+                        display: true,
+                        text: 'Stock Preis',
+                        font: {
+                            size: 20,
+                        }
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        font: {
+                            size: 14,
+                        }
                     }
                 },
-                ticks: {
-                    beginAtZero: true,
-                    font: {
-                        size: 14,
+                x: {
+                    display: true,
+                    ticks: {
+                        font: {
+                            size: 14,
+                        }
                     }
-                }
-            },
-            x: {
-                display: true,
-                ticks: {
-                    
-                    font: {
-                        size: 14,
-                    }
-                }
-            },
-            x1: {
-                display: true,
-                labels: date,
-                ticks: {
-                    
-                    font: {
-                        size: 14,
+                },
+                x1: {
+                    display: true,
+                    labels: date, // Das Datum als Label für die x-Achse
+                    ticks: {
+                        font: {
+                            size: 14,
+                        }
                     }
                 }
             }
-
         }
-    }
-    
+    };
+
+    // Canvas für das Diagramm holen und es anpassen
+    var ctx1 = document.getElementById(chartId); // Die ID für das Canvas wird verwendet
+    resizeCanvas(ctx1);
+    var chart1 = new Chart(ctx1, config);
+
+    // Wenn du noch ein zweites Canvas hast, das auch aktualisiert werden soll:
+    var ctx2 = document.getElementById(chartId + "_2");
+    resizeCanvas(ctx2);
+    var chart2 = new Chart(ctx2, config);
+
+    // Bei Fenstergrößenänderung wird die Größe der Diagramme angepasst
+    window.addEventListener('resize', function() {
+        resizeCanvas(ctx1);
+        resizeCanvas(ctx2);
+    });
 }
 
+// Hilfsfunktion, um die Größe des Canvas anzupassen
 function resizeCanvas(canvas) {
     if (canvas) {
-      canvas.width = canvas.parentElement.clientWidth;
-      canvas.height = canvas.parentElement.clientHeight;
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
     }
-  }
-  
-  // Chart für das erste Canvas erstellen
-  var ctx1 = document.getElementById('d3');
-  resizeCanvas(ctx1);
-  var chart1 = new Chart(ctx1, config);
-  
-  // Chart für das zweite Canvas erstellen
-  var ctx2 = document.getElementById('d3_2');
-  resizeCanvas(ctx2);
-  var chart2 = new Chart(ctx2, config);
-  
-  // Bei Fenster-Resize beide Canvas-Größen anpassen
-  window.addEventListener('resize', function() {
-    resizeCanvas(ctx1);
-    resizeCanvas(ctx2);
-  });
+}

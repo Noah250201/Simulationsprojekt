@@ -1,135 +1,109 @@
+function updateChartWithData(data, chartId) {
+  const jsonfile = data;
 
-var jsonfile = {
-"jsonarray": [{
-    "stockPrice":"112",
-    "date":"16.1.23",
-    "googleViewCount":"1000"},
-{
-    "stockPrice":"122",
-    "date":"15.2.23",
-    "googleViewCount":"2000"},
-{
-    "stockPrice":"124",
-    "date":"14.3.23"
-}
-]
-}; //variable will be replaced by the response later
+  const stockPrice = jsonfile.jsonarray.map(function(e) {
+      return e.stockPrice;
+  });
+  const googleViewCount = jsonfile.jsonarray.map(function(e) {
+      return e.googleViewCount;
+  });
+  const date = jsonfile.jsonarray.map(function(e) {
+      return e.date;
+  });
 
-var stockPrice = jsonfile.jsonarray.map(function(e){
-    return e.stockPrice;
-});
-var googleViewCount = jsonfile.jsonarray.map(function(e){
-    return e.googleViewCount;
-});
-var date = jsonfile.jsonarray.map(function(e){
-    return e.date;
-});
-
-                                                                                                              
-
-var ctx = document.getElementById('d1');
-var config = {
-    type: 'line',
-    data: {
-        labels: date,
-        datasets: [{
-            label: 'Stock Prices',
-            data: stockPrice,
-            yAxisID: 'y',
-            borderColor: 'blue',
-            fill: false
-        }, {
-            label: 'Google View Count',
-            data: googleViewCount,
-            yAxisID: 'y1',
-            borderColor: 'red',
-            fill: false
-        }]
-    },
-    options: {
-        responsive: true,
-        interaction: {
-          mode: 'index',
-          intersect: false,
-        },
-        stacked: false,
-        ticks: {
-          beginAtZero: true,
-          font: {
-              size: 14,
-          }
+  var config = {
+      type: 'line',
+      data: {
+          labels: date,
+          datasets: [{
+              label: 'Aktienpreise',
+              data: stockPrice,
+              yAxisID: 'y',
+              borderColor: 'blue',
+              fill: false
+          }, {
+              label: 'Google Aufrufe',
+              data: googleViewCount,
+              yAxisID: 'y1',
+              borderColor: 'red',
+              fill: false
+          }]
       },
-        scales: {
-          y: {
-            type: 'linear',
-            display: true,
-            position: 'left',
-            title: {
-              display: true,
-              text: 'Aktienkurs in €', //currency needs to be checked, dont know what the response will look like
-              align: 'center',
-              font: {
-                size: 20,
-              },
-            },
-            beginAtZero: true,
-            ticks: {
-              
-              max: 200, //TODO hard coded ticks, need to be adjusted
-              min: 0,
-              stepSize: 20
-            },
-            // grid line settings
-           
+      options: {
+          responsive: true,
+          interaction: {
+              mode: 'index',
+              intersect: false,
           },
-          y1: {
-            type: 'linear',
-            display: true,
-            position: 'right',
-            title: {
-                display: true,
-                text: 'Google Aufrufe',
-                align: 'center',
-                font: {
-                  size: 20,
-                },
+          stacked: false,
+          ticks: {
+              beginAtZero: true,
+              font: {
+                  size: 14,
+              }
+          },
+          scales: {
+              y: {
+                  type: 'linear',
+                  display: true,
+                  position: 'left',
+                  title: {
+                      display: true,
+                      text: 'Aktienkurs in €',
+                      align: 'center',
+                      font: { size: 20 },
+                  },
+                  beginAtZero: true,
+                  ticks: {
+                      max: 200,  // Maximalwert anpassen
+                      min: 0,
+                      stepSize: 20
+                  }
               },
-              beginAtZero: true,
-            ticks: {
-              beginAtZero: true,
-              max: 3000, //TODO hard coded ticks, need to be adjusted
-              min: 0,
-              stepSize: 500
-            },
-            // grid line settings
-            
-            grid: {
-              drawOnChartArea: false, // only want the grid lines for one axis to show up
-            },
-        }
-    }
-  }
-};
+              y1: {
+                  type: 'linear',
+                  display: true,
+                  position: 'right',
+                  title: {
+                      display: true,
+                      text: 'Google Aufrufe',
+                      align: 'center',
+                      font: { size: 20 },
+                  },
+                  beginAtZero: true,
+                  ticks: {
+                      beginAtZero: true,
+                      max: 3000,  // Maximalwert anpassen
+                      min: 0,
+                      stepSize: 500
+                  },
+                  grid: {
+                      drawOnChartArea: false,
+                  }
+              }
+          }
+      }
+  };
 
+  // Canvas für das erste Diagramm erstellen
+  var ctx1 = document.getElementById('d1');
+  var chart1 = new Chart(ctx1, config);  // Chart für das erste Canvas
+
+  // Canvas für das zweite Diagramm erstellen
+  var ctx2 = document.getElementById('d1_2');
+  var chart2 = new Chart(ctx2, config);  // Chart für das zweite Canvas
+
+  // Bei Fenster-Resize beide Canvas-Größen anpassen
+  window.addEventListener('resize', function() {
+      resizeCanvas(ctx1);
+      resizeCanvas(ctx2);
+  });
+}
+
+// Funktion, um die Canvas-Größe bei Resize anzupassen
 function resizeCanvas(canvas) {
   if (canvas) {
-    canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = canvas.parentElement.clientHeight;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
   }
 }
-
-// Chart für das erste Canvas erstellen
-var ctx1 = document.getElementById('d1');
-resizeCanvas(ctx1);
-var chart1 = new Chart(ctx1, config);
-
-// Chart für das zweite Canvas erstellen
-var ctx2 = document.getElementById('d1_2');
-resizeCanvas(ctx2);
-var chart2 = new Chart(ctx2, config);
-
-// Bei Fenster-Resize beide Canvas-Größen anpassen
-window.addEventListener('resize', function() {
-  resizeCanvas(ctx1);
-  resizeCanvas(ctx2);
-});
