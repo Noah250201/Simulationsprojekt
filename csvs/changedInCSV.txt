@@ -5,6 +5,7 @@ SteamSpy:
 
 GoogleTrends:
     - alle Dateien: ": (Worldwide)"-Tag entfernt
+    - alle " entfernt
 
 Stock:
     - NCBDF -> Bandai Namco
