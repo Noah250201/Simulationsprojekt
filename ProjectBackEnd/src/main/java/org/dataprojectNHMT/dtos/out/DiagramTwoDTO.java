@@ -2,14 +2,12 @@ package org.dataprojectNHMT.dtos.out;
 
 public class DiagramTwoDTO implements DiagramDTO {
     private String game;
-    private int supportedLanguages;
     private double currentPrice;
     private double initialPrice;
 
     public String toJson() {
         return "{" +
                 "\"game\": \"" + game + "\"" +
-                "\"supportedLanguages\": \"" + supportedLanguages + "\"" +
                 "\"currentPrice\": \"" + currentPrice + "\"" +
                 "\"initialPrice\": \"" + initialPrice + "\"" +
                 "}";
@@ -21,14 +19,6 @@ public class DiagramTwoDTO implements DiagramDTO {
 
     public void setGame(String game) {
         this.game = game;
-    }
-
-    public int getSupportedLanguages() {
-        return supportedLanguages;
-    }
-
-    public void setSupportedLanguages(int supportedLanguages) {
-        this.supportedLanguages = supportedLanguages;
     }
 
     public double getCurrentPrice() {
