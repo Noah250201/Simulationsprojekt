@@ -27,7 +27,6 @@ public class DiagramTwoService {
                     dto.setGame(entity.getGameName());
                     dto.setCurrentPrice(entity.getCurrentPrice());
                     dto.setInitialPrice(entity.getInitialPrice());
-                    dto.setSupportedLanguages(entity.getSupportedLanguage());
                     list.add(dto);
                 });
 

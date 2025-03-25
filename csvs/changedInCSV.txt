@@ -1,0 +1,14 @@
+SteamSpy:
+    - Electronic Arts -> EA
+    - BANDAI NAMCO Entertainment -> Bandai Namco
+    - NetEase Games Global -> NetEase
+
+GoogleTrends:
+    - alle Dateien: ": (Worldwide)"-Tag entfernt
+    - alle " entfernt
+
+Stock:
+    - NCBDF -> Bandai Namco
+    - NTES -> NetEase
+    - SQNXF -> Square Enix
+    - UBI.PA -> Ubisoft
