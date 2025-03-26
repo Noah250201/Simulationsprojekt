@@ -26,7 +26,7 @@ public class DiagramOneService {
         List<DiagramDTO> dtoList = new ArrayList<>();
         List<GameEntity> gameList = input.getGames().stream().map(db::getGameByName).toList();
         PublisherEntity publisher = db.getPublisherByName(input.getPublisher());
-        LocalDate date = Main.lastDateOnRecord;
+        LocalDate date = Main.LAST_DATE_ON_RECORD;
 
         for (GameEntity game : gameList) {
             DiagramOneDTO dto = new DiagramOneDTO();
