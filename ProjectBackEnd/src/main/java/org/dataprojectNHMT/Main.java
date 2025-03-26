@@ -18,8 +18,8 @@ public class Main {
     public static void main(String[] args) {
         DatabaseController db = new DatabaseController();
         CSVReader csvReader = new CSVReader(db);
-        csvReader.readCsvs("dailyStockData","SteamSpyGames",
-                List.of("trendsBandaiNamco","trendsEA","trendsNetEase","trendsSquareEnix","trendsUbisoft"));
+        csvReader.readCsvs("dailyStockData.csv","SteamSpyGames.csv",
+                List.of("trendsBandaiNamco.csv","trendsEA.csv","trendsNetEase.csv","trendsSquareEnix.csv","trendsUbisoft.csv"));
         RESTServerController rest = new RESTServerController(8080, db);
         log.debug("Finished creating RESTServerController.");
         HTMLServerController html = new HTMLServerController(4200);
