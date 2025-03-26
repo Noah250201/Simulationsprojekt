@@ -31,9 +31,34 @@ public class CSVReader {
         analyticsCsvs = analyticsCsvs.stream()
                 .map(fileName -> filesLocation + fileName).toList();
 
+        analyticsCsvs.forEach(this::saveAnalyticsCsvAndPublisherToDB);
         saveStockCsvToDB(stockCsv);
         saveGameCsvToDB(gameCsv);
-        analyticsCsvs.forEach(this::saveAnalyticsCsvAndPublisherToDB);
+    }
+
+    private void saveAnalyticsCsvAndPublisherToDB(String uri) {
+        try (Scanner scanner = new Scanner(new File(uri))) {
+            String[] publisherValues = scanner.next().split(",");
+            PublisherEntity publisher = new PublisherEntity();
+
+            publisher.setPublisherName(publisherValues[1]);
+            db.insertPublisher(publisher);
+            publisher = db.getPublisherByName(publisher.getPublisherName());
+
+            while (scanner.hasNext()) {
+                AnalyticsEntity entity = new AnalyticsEntity();
+                String[] values = scanner.next().split(",");
+
+                entity.setDate(LocalDate.parse(values[0]));
+                entity.setPublisherID(publisher.getPublisherID());
+                entity.setSearches(Integer.parseInt(values[1]));
+
+                db.insertAnalytics(entity);
+            }
+
+        } catch (FileNotFoundException e) {
+            log.error("Could not find File at location: {}", uri, e);
+        }
     }
 
     private void saveStockCsvToDB(String uri) {
@@ -66,40 +91,16 @@ public class CSVReader {
 
                 entity.setGameID(Integer.parseInt(values[0]));
                 entity.setGameName(values[1]);
-                entity.setOwner(values[3]);
+                int publisherID = db.getPublisherByName(values[2]).getPublisherID();
+                entity.setPublisherID(publisherID);
                 double price = Double.parseDouble(values[4].split(" USD")[0]);
                 entity.setCurrentPrice(price);
-                double discount = Double.parseDouble(values[5].split("%")[0]);
-                entity.setInitialPrice(price - (price * (discount/100)));
+                double prozentSatz = 100 - Double.parseDouble(values[5].split("%")[0]);
+                entity.setInitialPrice((price / prozentSatz) * 100);
                 entity.setAveragedPlayersForever(Integer.parseInt(values[11]));
                 entity.setAveragedPlayersLastTwoWeeks(Integer.parseInt(values[12]));
 
                 this.db.insertGame(entity, db.getPublisherByName(values[2]));
-            }
-
-        } catch (FileNotFoundException e) {
-            log.error("Could not find File at location: {}", uri, e);
-        }
-    }
-
-    private void saveAnalyticsCsvAndPublisherToDB(String uri) {
-        try (Scanner scanner = new Scanner(new File(uri))) {
-            String[] publisherValues = scanner.next().split(",");
-            PublisherEntity publisher = new PublisherEntity();
-
-            publisher.setPublisherName(publisherValues[1]);
-            db.insertPublisher(publisher);
-            publisher = db.getPublisherByName(publisher.getPublisherName());
-
-            while (scanner.hasNext()) {
-                AnalyticsEntity entity = new AnalyticsEntity();
-                String[] values = scanner.next().split(",");
-
-                entity.setPublisherID(publisher.getPublisherID());
-                entity.setSearches(Integer.parseInt(values[1]));
-//                entity.setMonth();
-
-                db.insertAnalytics(entity);
             }
 
         } catch (FileNotFoundException e) {
