@@ -67,5 +67,7 @@ Comparing player numbers, initial and current prices of publishers games, review
 
 ER Diagramm
 
+PP: https://1drv.ms/p/c/65a410f8df221b96/EQAsuZCcFr1OkIOVqeTAMQkBBTnA0GRY6J7T7yKwqJ0boA?e=zcMTUF
+
 Open Question :
      Do we need Dev as an extra class
