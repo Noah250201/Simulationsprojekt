@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class CSVReader {
     }
 
     public void readCsvs(String stockCsv, String gameCsv, List<String> analyticsCsvs) {
-        String filesLocation = "../csvs";
+        String filesLocation = "../csvs/";
 
         stockCsv = filesLocation + stockCsv;
         gameCsv = filesLocation + gameCsv;
@@ -38,16 +39,16 @@ public class CSVReader {
 
     private void saveAnalyticsCsvAndPublisherToDB(String uri) {
         try (Scanner scanner = new Scanner(new File(uri))) {
-            String[] publisherValues = scanner.next().split(",");
+            String[] publisherValues = scanner.nextLine().split(";");
             PublisherEntity publisher = new PublisherEntity();
 
             publisher.setPublisherName(publisherValues[1]);
             db.insertPublisher(publisher);
             publisher = db.getPublisherByName(publisher.getPublisherName());
 
-            while (scanner.hasNext()) {
+            while (scanner.hasNextLine()) {
                 AnalyticsEntity entity = new AnalyticsEntity();
-                String[] values = scanner.next().split(",");
+                String[] values = scanner.nextLine().split(";");
 
                 entity.setDate(LocalDate.parse(values[0]));
                 entity.setPublisherID(publisher.getPublisherID());
@@ -63,11 +64,11 @@ public class CSVReader {
 
     private void saveStockCsvToDB(String uri) {
         try (Scanner scanner = new Scanner(new File(uri))) {
-            scanner.next(); //skip titles
+            scanner.nextLine(); //skip titles
 
-            while (scanner.hasNext()) {
+            while (scanner.hasNextLine()) {
                 StockEntity entity = new StockEntity();
-                String[] values = scanner.next().split(",");
+                String[] values = scanner.nextLine().split(",");
 
                 entity.setDate(LocalDate.parse(values[0]));
                 int publisherID = db.getPublisherByName(values[1]).getPublisherID();
@@ -83,24 +84,30 @@ public class CSVReader {
 
     private void saveGameCsvToDB(String uri) {
         try (Scanner scanner = new Scanner(new File(uri))) {
-            scanner.next(); //skip titles
+            scanner.nextLine(); //skip titles
+            List<Integer> gameIDs = new ArrayList<>();
 
-            while (scanner.hasNext()) {
-                GameEntity entity = new GameEntity();
-                String[] values = scanner.next().split(",");
+            while (scanner.hasNextLine()) {
+                String[] values = scanner.nextLine().split(";");
+                int gameID = Integer.parseInt(values[0]);
 
-                entity.setGameID(Integer.parseInt(values[0]));
-                entity.setGameName(values[1]);
-                int publisherID = db.getPublisherByName(values[2]).getPublisherID();
-                entity.setPublisherID(publisherID);
-                double price = Double.parseDouble(values[4].split(" USD")[0]);
-                entity.setCurrentPrice(price);
-                double prozentSatz = 100 - Double.parseDouble(values[5].split("%")[0]);
-                entity.setInitialPrice((price / prozentSatz) * 100);
-                entity.setAveragedPlayersForever(Integer.parseInt(values[11]));
-                entity.setAveragedPlayersLastTwoWeeks(Integer.parseInt(values[12]));
+                if (!gameIDs.contains(gameID)) {
+                    GameEntity entity = new GameEntity();
+                    gameIDs.add(gameID);
 
-                this.db.insertGame(entity, db.getPublisherByName(values[2]));
+                    entity.setGameID(gameID);
+                    entity.setGameName(values[1]);
+                    int publisherID = db.getPublisherByName(values[2]).getPublisherID();
+                    entity.setPublisherID(publisherID);
+                    double price = Double.parseDouble(values[4].split(" USD")[0].replace(',', '.'));
+                    entity.setCurrentPrice(price);
+                    double prozentSatz = 100 - Double.parseDouble(values[5].split("%")[0]);
+                    entity.setInitialPrice((price / prozentSatz) * 100);
+                    entity.setAveragedPlayersForever(Integer.parseInt(values[11]));
+                    entity.setAveragedPlayersLastTwoWeeks(Integer.parseInt(values[12]));
+
+                    this.db.insertGame(entity);
+                }
             }
 
         } catch (FileNotFoundException e) {
