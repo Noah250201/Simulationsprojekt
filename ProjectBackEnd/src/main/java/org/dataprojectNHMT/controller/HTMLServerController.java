@@ -32,7 +32,7 @@ public class HTMLServerController {
         context.setContextPath("/");
         restServer.setHandler(context);
 
-        String frontEndLocation = "../Datenprojekt";
+        String frontEndLocation = "../Simulationsprojekt/Datenprojekt";
         context.setResourceBase(frontEndLocation);
         context.addServlet(DefaultServlet.class, "/");
 

@@ -1,14 +1,15 @@
 package org.dataprojectNHMT.entitys;
 
+import java.time.LocalDate;
+
 public class AnalyticsEntity {
     //PrimaryKey
     private int analyticsID;
 
-    private String month;
+    private LocalDate date;
     private int searches;
 
     //ForeignKeys
-    private int gameID;
     private int publisherID;
 
     public int getAnalyticsID() {
@@ -19,12 +20,12 @@ public class AnalyticsEntity {
         this.analyticsID = analyticsID;
     }
 
-    public String getMonth() {
-        return month;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public int getSearches() {
@@ -33,14 +34,6 @@ public class AnalyticsEntity {
 
     public void setSearches(int searches) {
         this.searches = searches;
-    }
-
-    public int getGameID() {
-        return gameID;
-    }
-
-    public void setGameID(int gameID) {
-        this.gameID = gameID;
     }
 
     public int getPublisherID() {
