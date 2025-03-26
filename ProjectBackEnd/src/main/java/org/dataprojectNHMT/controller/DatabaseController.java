@@ -42,7 +42,7 @@ public class DatabaseController {
                 "initialPrice DOUBLE," +
                 "currentPrice DOUBLE," +
                 "averagedPlayersForever INTEGER," +
-                "avgPlayerLastTwoWeeks INTEGER" +
+                "avgPlayerLastTwoWeeks INTEGER," +
                 "publisherID INTEGER," +
                 "FOREIGN KEY (publisherID) REFERENCES publisher(publisherID));"
         );
