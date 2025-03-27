@@ -69,7 +69,7 @@ function saveSettings(popupId) {
         values[input.id] = input.value;  // Datumswert korrekt erfassen
     });
 
-    let endpoint = 'http://localhost:8080/diagram';
+    let endpoint = 'http://localhost:8080';
     switch (popupId) {
         case 'popup_one':
             endpoint = endpoint + '/pricingGames'; // Controller for Diagram 1
