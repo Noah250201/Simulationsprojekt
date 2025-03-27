@@ -13,7 +13,7 @@ import java.util.List;
 public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    public static final LocalDate LAST_DATE_ON_RECORD = LocalDate.parse("2025-03-16");
+    public static final LocalDate LAST_DATE_ON_RECORD = LocalDate.parse("2025-03-27");
 
     public static void main(String[] args) {
         DatabaseController db = new DatabaseController();
