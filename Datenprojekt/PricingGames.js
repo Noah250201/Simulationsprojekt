@@ -8,7 +8,7 @@ function updateChartTwoWithData(data, chartId) {
     });
 
     var initialPrice = jsonfile.jsonarray.map(function(e) {
-        return e.initalPrice;
+        return e.initialPrice;
     });
 
     // Hier gehe ich davon aus, dass es ein Feld "date" im JSON gibt, das du verwenden möchtest
@@ -72,12 +72,12 @@ function updateChartTwoWithData(data, chartId) {
     };
 
     // Canvas für das Diagramm holen und es anpassen
-    var ctx1 = document.getElementById(chartId); // Hier wird die ID für das Canvas verwendet
+    var ctx1 = document.getElementById("d3"); // Hier wird die ID für das Canvas verwendet
     resizeCanvas(ctx1);
     var chart1 = new Chart(ctx1, config);
 
     // Wenn du noch ein zweites Canvas hast (z.B. d2_2), dann das hier:
-    var ctx2 = document.getElementById(chartId + "_2");
+    var ctx2 = document.getElementById("d3_2");
     resizeCanvas(ctx2);
     var chart2 = new Chart(ctx2, config);
 

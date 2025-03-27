@@ -1,8 +1,8 @@
 function updateChartThreeWithData(data, chartId) {
     const jsonfile = data;
 
-    var stockPrice = jsonfile.jsonarray.map(function(e) {
-        return e.stockPrice;
+    var stockprice = jsonfile.jsonarray.map(function(e) {
+        return e.stockprice;
     });
 
     var date = jsonfile.jsonarray.map(function(e) {
@@ -23,7 +23,7 @@ function updateChartThreeWithData(data, chartId) {
         datasets: [
             {
                 label: 'Stock Preis',
-                data: stockPrice,
+                data: stockprice,
                 type: 'line', // Linie für den Stock Preis
                 yAxisID: 'y1',
                 xAxisID: 'x1',
@@ -106,12 +106,12 @@ function updateChartThreeWithData(data, chartId) {
     };
 
     // Canvas für das Diagramm holen und es anpassen
-    var ctx1 = document.getElementById(chartId); // Die ID für das Canvas wird verwendet
+    var ctx1 = document.getElementById("d2"); // Die ID für das Canvas wird verwendet
     resizeCanvas(ctx1);
     var chart1 = new Chart(ctx1, config);
 
     // Wenn du noch ein zweites Canvas hast, das auch aktualisiert werden soll:
-    var ctx2 = document.getElementById(chartId + "_2");
+    var ctx2 = document.getElementById("d2_2");
     resizeCanvas(ctx2);
     var chart2 = new Chart(ctx2, config);
 
