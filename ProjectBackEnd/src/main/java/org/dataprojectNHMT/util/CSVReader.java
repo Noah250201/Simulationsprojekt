@@ -25,7 +25,7 @@ public class CSVReader {
     }
 
     public void readCsvs(String stockCsv, String gameCsv, List<String> analyticsCsvs) {
-        String filesLocation = "../csvs/";
+        String filesLocation = "../../csvs/";
 
         stockCsv = filesLocation + stockCsv;
         gameCsv = filesLocation + gameCsv;
