@@ -72,13 +72,13 @@ function saveSettings(popupId) {
     let endpoint = 'http://localhost:8080/diagram';
     switch (popupId) {
         case 'popup_one':
-            endpoint = endpoint + 'Three'; // Controller for Diagram 1
+            endpoint = endpoint + '/pricingGames'; // Controller for Diagram 1
             break;
         case 'popup_two':
-            endpoint = endpoint + 'Two'; // Controller for Diagram 2
+            endpoint = endpoint + '/averagePlayersStockPrice'; // Controller for Diagram 2
             break;
         case 'popup_three':
-            endpoint = endpoint + 'One'; // Controller for Diagram 3
+            endpoint = endpoint + '/publisherStockAndViews'; // Controller for Diagram 3
             break;
         default:
             console.error(`Unknown popupId: ${popupId}`);
@@ -90,7 +90,7 @@ const payload = {
     settings: values, 
 };
 
-fetch(endpoint, { // endpoint controller in backend set in switchcase above
+fetch(endpoint, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json', 
@@ -107,15 +107,15 @@ fetch(endpoint, { // endpoint controller in backend set in switchcase above
         console.log('Settings successfully saved:', data);
 
         if (popupId === 'popup_one') {
-            updateChartThreeWithData(data, 'chart3');
-        } else if (popupId === 'popup_two') {
             updateChartTwoWithData(data, 'chart2');
+        } else if (popupId === 'popup_two') {
+            updateChartThreeWithData(data, 'chart3');
         } else if (popupId === 'popup_three') {
             updateChartOneWithData(data, 'chart1');
         }
     })
     .catch((error) => {
-        console.error('Error saving settings:', error); 
+        console.error('Error saving settings:', error);
     });
 
 console.log(`Sent settings for ${popupId} to ${endpoint}:`, payload); 
