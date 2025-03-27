@@ -61,12 +61,12 @@ function saveSettings(popupId) {
     
     const dropdowns = document.querySelectorAll(`#${popupId} select`);
     const dateInputs = document.querySelectorAll(`#${popupId} input[type="date"]`);
-    const values = {};
+    const values = [];
     dropdowns.forEach((dropdown) => {
-        values[dropdown.id] = dropdown.value;
+        values.push(dropdown.value);
     });
     dateInputs.forEach((input) => {
-        values[input.id] = input.value;  // Datumswert korrekt erfassen
+        values.push(input.value);  // Datumswert korrekt erfassen
     });
 
     let endpoint = 'http://localhost:8080';
