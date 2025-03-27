@@ -2,7 +2,7 @@ package org.dataprojectNHMT.dtos.out;
 
 import java.time.LocalDate;
 
-public class DiagramThreeDTO implements DiagramDTO {
+public class PublisherStockAndViewsDTO implements DiagramDTO {
     private double stockprice;
     private LocalDate date;
     private long googleViewCount;

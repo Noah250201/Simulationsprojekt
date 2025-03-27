@@ -2,7 +2,7 @@ package org.dataprojectNHMT.dtos.out;
 
 import java.time.LocalDate;
 
-public class DiagramOneDTO implements DiagramDTO {
+public class AveragePlayersStockPriceDTO implements DiagramDTO {
     private double stockprice;
     private LocalDate date;
     private String game;
