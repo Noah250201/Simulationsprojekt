@@ -320,12 +320,12 @@ select:hover{
     align-items: center;
     overflow: hidden;
 }
-#d1, #d2, #d3{
-    width: 100% !important; /* Erzwingt die volle Breite */
-    height: 100% !important; /* Erzwingt die volle Höhe */
+#d1, #d2, #d3, #d1_2, #d2_2, #d3_2{
+    width: 100% !important;
+    height: 100% !important;
     max-width: 100%;
     max-height: 100%;
-    display: block; /* Entfernt Standardabstände */
+    display: block;
 }
 
 #dropdown3_2, #dropdown3_3, #dropdown1_2, #dropdown1_3{
