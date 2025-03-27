@@ -1,29 +1,31 @@
 package org.dataprojectNHMT.services;
 
 import org.dataprojectNHMT.controller.DatabaseController;
-import org.dataprojectNHMT.dtos.in.InputTwoDTO;
+import org.dataprojectNHMT.dtos.InputDTO;
 import org.dataprojectNHMT.dtos.out.DiagramDTO;
-import org.dataprojectNHMT.dtos.out.DiagramTwoDTO;
+import org.dataprojectNHMT.dtos.out.PricingGamesDTO;
 import org.dataprojectNHMT.entitys.GameEntity;
 import org.dataprojectNHMT.util.JsonMapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiagramTwoService {
+public class PricingGamesService {
 
     private final DatabaseController db;
 
-    public DiagramTwoService(DatabaseController db) {
+    public PricingGamesService(DatabaseController db) {
         this.db = db;
     }
 
-    public String getDiagram(InputTwoDTO input) {
+    public String getDiagram(InputDTO input) {
         List<DiagramDTO> list = new ArrayList<>();
-        input.getGames().forEach(
+        List<String> values = input.getValues();
+
+        values.subList(1, values.size()).forEach(
                 game ->{
                     GameEntity entity = db.getGameByName(game);
-                    DiagramTwoDTO dto = new DiagramTwoDTO();
+                    PricingGamesDTO dto = new PricingGamesDTO();
                     dto.setGame(entity.getGameName());
                     dto.setCurrentPrice(entity.getCurrentPrice());
                     dto.setInitialPrice(entity.getInitialPrice());

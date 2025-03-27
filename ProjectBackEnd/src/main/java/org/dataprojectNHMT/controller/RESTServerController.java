@@ -1,12 +1,10 @@
 package org.dataprojectNHMT.controller;
 
 import io.javalin.Javalin;
-import org.dataprojectNHMT.dtos.in.InputOneDTO;
-import org.dataprojectNHMT.dtos.in.InputThreeDTO;
-import org.dataprojectNHMT.dtos.in.InputTwoDTO;
-import org.dataprojectNHMT.services.DiagramOneService;
-import org.dataprojectNHMT.services.DiagramThreeService;
-import org.dataprojectNHMT.services.DiagramTwoService;
+import org.dataprojectNHMT.dtos.InputDTO;
+import org.dataprojectNHMT.services.AveragePlayersStockPriceService;
+import org.dataprojectNHMT.services.PublisherStockAndViewsService;
+import org.dataprojectNHMT.services.PricingGamesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,24 +40,24 @@ public class RESTServerController {
         server.after("/stop", context -> System.exit(0));
 
         //Endpoint for Diagram One
-        DiagramOneService serviceOne = new DiagramOneService(db);
-        server.post("/diagramOne",
+        AveragePlayersStockPriceService averagePlayersStockPriceService = new AveragePlayersStockPriceService(db);
+        server.post("/averagePlayersStockPrice",
                 context -> context.result(
-                        serviceOne.getDiagram(
-                                context.bodyAsClass(InputOneDTO.class))));
+                        averagePlayersStockPriceService.getDiagram(
+                                context.bodyAsClass(InputDTO.class))));
 
         //Endpoint for Diagram Two
-        DiagramTwoService serviceTwo = new DiagramTwoService(db);
-        server.post("/diagramTwo",
+        PricingGamesService pricingGamesService = new PricingGamesService(db);
+        server.post("/pricingGames",
                 context -> context.result(
-                        serviceTwo.getDiagram(
-                                context.bodyAsClass(InputTwoDTO.class))));
+                        pricingGamesService.getDiagram(
+                                context.bodyAsClass(InputDTO.class))));
 
         //Endpoint for Diagram Three
-        DiagramThreeService serviceThree = new DiagramThreeService(db);
-        server.post("/diagramThree",
+        PublisherStockAndViewsService publisherStockAndViewsService = new PublisherStockAndViewsService(db);
+        server.post("/publisherStockAndViews",
                 context -> context.result(
-                        serviceThree.getDiagram(
-                                context.bodyAsClass(InputThreeDTO.class))));
+                        publisherStockAndViewsService.getDiagram(
+                                context.bodyAsClass(InputDTO.class))));
     }
 }
