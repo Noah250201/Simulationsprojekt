@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('diagram_three').addEventListener('click', () => openPopup('popup_three'));
 });
 
+window.addEventListener("beforeunload", () => {
+    fetch('http://localhost:8080/stop', {
+        method: 'GET',
+        keepalive: true
+    });
+});
+
 function openSettings(popupId) {
     const settingsContent = document.querySelector(`#${popupId} .settings-content`);
     const mainContent = document.querySelector(`#${popupId} .main-content`);
