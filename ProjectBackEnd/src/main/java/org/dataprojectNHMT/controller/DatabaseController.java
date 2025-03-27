@@ -65,59 +65,66 @@ public class DatabaseController {
     }
 
     public void insertAnalytics(AnalyticsEntity entity){
-        try (Statement statement = connection.createStatement()) {
-            statement.execute("INSERT INTO analytics (date,searches,publisherID) VALUES(" +
-                    "'" + entity.getDate().toString() + "'," +
-                    entity.getSearches() + "," +
-                    entity.getPublisherID() + ");");
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO analytics (date,searches,publisherID) VALUES(?,?,?);")) {
+            statement.setDate(1, Date.valueOf(entity.getDate()));
+            statement.setInt(2,entity.getSearches());
+            statement.setInt(3,entity.getPublisherID());
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             log.error("Failed to create new AnalyticsEntity",e);
         }
     }
 
-    public void insertGame(GameEntity game, PublisherEntity publisher) {
-        try (Statement statement = connection.createStatement()) {
-            statement.execute("INSERT INTO games VALUES(" +
-                    game.getGameID() + "," +
-                    "'" + game.getGameName() + "'," +
-                    game.getInitialPrice() + "," +
-                    game.getCurrentPrice() + "," +
-                    game.getAveragedPlayersForever() + "," +
-                    game.getAveragedPlayersLastTwoWeeks() + "," +
-                    game.getPublisherID() + ");");
+    public void insertGame(GameEntity game) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO games VALUES(?,?,?,?,?,?,?);")) {
+            statement.setInt(1,game.getGameID());
+            statement.setString(2, game.getGameName());
+            statement.setDouble(3,game.getInitialPrice());
+            statement.setDouble(4,game.getCurrentPrice());
+            statement.setInt(5,game.getAveragedPlayersForever());
+            statement.setInt(6,game.getAveragedPlayersLastTwoWeeks());
+            statement.setInt(7,game.getPublisherID());
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             log.error("Failed to create new GameEntity",e);
         }
     }
 
     public void insertPublisher(PublisherEntity publisher) {
-        try (Statement statement = connection.createStatement()) {
-            statement.execute("INSERT INTO publisher (publisherName) VALUES('" +
-                    publisher.getPublisherName() + "');");
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO publisher (publisherName) VALUES(?);")) {
+            statement.setString(1, publisher.getPublisherName());
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             log.error("Failed to create new PublisherEntity",e);
         }
     }
 
     public void insertStock(StockEntity entity) {
-        try (Statement statement = connection.createStatement()) {
-            statement.execute("INSERT INTO stock (price,date,publisherID) VALUES(" +
-                    entity.getPrice() + "," +
-                    "'" + entity.getDate().toString() + "'," +
-                    entity.getPublisherID() + ");");
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO stock (price, date, publisherID) VALUES (?, ?, ?);")) {
+            statement.setDouble(1, entity.getPrice());
+            statement.setString(2, entity.getDate().toString());
+            statement.setInt(3, entity.getPublisherID());
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             log.error("Failed to create new PublisherEntity",e);
         }
     }
 
     public PublisherEntity getPublisherByName(String publisherSearchName) {
-
       PublisherEntity publisherEntity = new PublisherEntity();
-        String selectPublisherByName = "SELECT * From publisher WHERE publisherName = '" + publisherSearchName + "'" ;
 
       try(
       Statement statement = connection.createStatement();
-      ResultSet resultSet = statement.executeQuery(selectPublisherByName)
+      ResultSet resultSet = statement.executeQuery(
+              "SELECT * From publisher WHERE publisherName = '" + publisherSearchName + "'")
       ) {
 
           if (resultSet.next()) {
@@ -132,13 +139,12 @@ public class DatabaseController {
     }
 
     public GameEntity getGameByName(String gameSearchName) {
-
         GameEntity gameEntity= new GameEntity();
-        String selectGameByName = "SELECT * FROM games WHERE gameName= '" + gameSearchName + "'";
 
         try(
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(selectGameByName)
+        ResultSet resultSet = statement.executeQuery(
+                "SELECT * FROM games WHERE gameName= '" + gameSearchName + "'")
         ) {
             if (resultSet.next()) {
                 gameEntity.setGameID(resultSet.getInt("gameID"));
@@ -157,13 +163,12 @@ public class DatabaseController {
     }
 
     public AnalyticsEntity getAnalyticsByDateAndPublisher(LocalDate analyticsSearchDate, PublisherEntity searchPublisher) {
-
         AnalyticsEntity entity = new AnalyticsEntity();
         List<AnalyticsEntity> analyticsList = new ArrayList<>();
-        String selectAnalyticsByName = "SELECT * FROM analytics WHERE publisherID=" + searchPublisher.getPublisherID();
 
         try( Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(selectAnalyticsByName)
+             ResultSet resultSet = statement.executeQuery(
+                     "SELECT * FROM analytics WHERE publisherID=" + searchPublisher.getPublisherID())
         ) {
             while (resultSet.next()){
                 AnalyticsEntity analyticsEntity=new AnalyticsEntity();
@@ -192,13 +197,13 @@ public class DatabaseController {
     }
 
     public StockEntity getStockByDateAndPublisher(LocalDate stockSearchDate, PublisherEntity searchPublisher) {
-
         StockEntity stockEntity = new StockEntity();
-        String selectStockByName = "SELECT * FROM stock WHERE date='" + stockSearchDate +
-                "' AND publisherID=" + searchPublisher.getPublisherID();
+
         try (
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(selectStockByName)
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT * FROM stock WHERE date='" + stockSearchDate +
+                            "' AND publisherID=" + searchPublisher.getPublisherID())
         ) {
             if(resultSet.next()){
                 stockEntity.setStockID(resultSet.getInt("stockID"));
