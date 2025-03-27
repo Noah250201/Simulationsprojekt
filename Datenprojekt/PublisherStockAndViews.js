@@ -1,8 +1,8 @@
 function updateChartOneWithData(data, chartId) {
   const jsonfile = data;
 
-  const stockPrice = jsonfile.jsonarray.map(function(e) {
-      return e.stockPrice;
+  const stockprice = jsonfile.jsonarray.map(function(e) {
+      return e.stockprice;
   });
   const googleViewCount = jsonfile.jsonarray.map(function(e) {
       return e.googleViewCount;
@@ -17,7 +17,7 @@ function updateChartOneWithData(data, chartId) {
           labels: date,
           datasets: [{
               label: 'Aktienpreise',
-              data: stockPrice,
+              data: stockprice,
               yAxisID: 'y',
               borderColor: 'blue',
               fill: false

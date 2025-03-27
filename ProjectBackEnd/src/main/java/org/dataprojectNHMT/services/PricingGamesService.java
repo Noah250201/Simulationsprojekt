@@ -22,7 +22,11 @@ public class PricingGamesService {
         List<DiagramDTO> list = new ArrayList<>();
         List<String> values = input.getValues();
 
-        values.subList(1, values.size()).forEach(
+        values = values.stream()
+                .filter(value -> !value.isEmpty()).toList();
+        values = values.subList(1, values.size());
+
+        values.forEach(
                 game ->{
                     GameEntity entity = db.getGameByName(game);
                     PricingGamesDTO dto = new PricingGamesDTO();

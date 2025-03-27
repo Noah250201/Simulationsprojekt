@@ -3,24 +3,24 @@ package org.dataprojectNHMT.dtos.out;
 import java.time.LocalDate;
 
 public class PublisherStockAndViewsDTO implements DiagramDTO {
-    private double stockprice;
+    private double stockPrice;
     private LocalDate date;
     private long googleViewCount;
 
     public String toJson() {
         return "{" +
-                "\"stockprice\": \"" + stockprice + "\"" +
-                "\"date\": \"" + date + "\"" +
+                "\"stockprice\": \"" + stockPrice + "\"," +
+                "\"date\": \"" + date + "\"," +
                 "\"googleViewCount\": \"" + googleViewCount + "\"" +
                 "}";
     }
 
-    public double getStockprice() {
-        return stockprice;
+    public double getStockPrice() {
+        return stockPrice;
     }
 
-    public void setStockprice(double stockprice) {
-        this.stockprice = stockprice;
+    public void setStockPrice(double stockPrice) {
+        this.stockPrice = stockPrice;
     }
 
     public LocalDate getDate() {

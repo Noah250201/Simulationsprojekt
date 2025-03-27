@@ -40,7 +40,7 @@ public class PublisherStockAndViewsService {
 
             PublisherStockAndViewsDTO dto = new PublisherStockAndViewsDTO();
             dto.setDate(dateIndex);
-            dto.setStockprice(stock.getPrice());
+            dto.setStockPrice(stock.getPrice());
             dto.setGoogleViewCount(analytics.getSearches());
             list.add(dto);
 

@@ -23,15 +23,17 @@ public class AveragePlayersStockPriceService {
     }
 
     public String getDiagram(InputDTO input) {
-        List<String> values = input.getValues().stream()
-                .filter(String::isEmpty).toList();
+        List<String> values = input.getValues();
         String interval = values.get(1);
 
         String publisherName = values.get(0);
         PublisherEntity publisher = db.getPublisherByName(publisherName);
 
-        List<String> games = values.subList(2, values.size());
-        List<GameEntity> gameList = games.stream()
+        values = values.stream()
+                .filter(value -> !value.isEmpty()).toList();
+        values = values.subList(2, values.size());
+        
+        List<GameEntity> gameList = values.stream()
                 .map(db::getGameByName).toList();
 
         LocalDate lastDate = Main.LAST_DATE_ON_RECORD;
@@ -43,7 +45,7 @@ public class AveragePlayersStockPriceService {
             dto.setGame(game.getGameName());
             dto.setAveragePlayers(game.getAveragedPlayersLastTwoWeeks());
             dto.setDate(lastDate);
-            dto.setStockprice(stock.getPrice());
+            dto.setStockPrice(stock.getPrice());
             dtoList.add(dto);
 
             lastDate = switch (interval.toLowerCase()) {

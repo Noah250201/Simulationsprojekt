@@ -7,8 +7,8 @@ public class PricingGamesDTO implements DiagramDTO {
 
     public String toJson() {
         return "{" +
-                "\"game\": \"" + game + "\"" +
-                "\"currentPrice\": \"" + currentPrice + "\"" +
+                "\"game\": \"" + game + "\"," +
+                "\"currentPrice\": \"" + currentPrice + "\"," +
                 "\"initialPrice\": \"" + initialPrice + "\"" +
                 "}";
     }

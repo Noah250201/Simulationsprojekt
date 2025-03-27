@@ -3,26 +3,26 @@ package org.dataprojectNHMT.dtos.out;
 import java.time.LocalDate;
 
 public class AveragePlayersStockPriceDTO implements DiagramDTO {
-    private double stockprice;
+    private double stockPrice;
     private LocalDate date;
     private String game;
     private int averagePlayers;
 
     public String toJson() {
         return "{" +
-                "\"stockprice\": \"" + stockprice + "\"" +
-                "\"date\": \"" + date + "\"" +
-                "\"game\": \"" + game + "\"" +
+                "\"stockprice\": \"" + stockPrice + "\"," +
+                "\"date\": \"" + date + "\"," +
+                "\"game\": \"" + game + "\"," +
                 "\"averagePlayers\": \"" + averagePlayers + "\"" +
                 "}";
     }
 
-    public double getStockprice() {
-        return stockprice;
+    public double getStockPrice() {
+        return stockPrice;
     }
 
-    public void setStockprice(double stockprice) {
-        this.stockprice = stockprice;
+    public void setStockPrice(double stockPrice) {
+        this.stockPrice = stockPrice;
     }
 
     public LocalDate getDate() {

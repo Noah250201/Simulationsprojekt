@@ -7,7 +7,7 @@ import java.util.List;
 public class JsonMapper {
     public static String mapDTOsToArray(List<DiagramDTO> dto) {
         int lastElementIndex = dto.size() - 1;
-        StringBuilder builder = new StringBuilder("\"jsonarray\":{[");
+        StringBuilder builder = new StringBuilder("{\"jsonarray\":[");
 
         for (int i = 0; i < lastElementIndex; i++) {
             builder.append(dto.get(i).toJson());
