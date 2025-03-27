@@ -20,9 +20,9 @@ public class Main {
         CSVReader csvReader = new CSVReader(db);
         csvReader.readCsvs("dailyStockData.csv","SteamSpyGames.csv",
                 List.of("trendsBandaiNamco.csv","trendsEA.csv","trendsNetEase.csv","trendsSquareEnix.csv","trendsUbisoft.csv"));
-        RESTServerController rest = new RESTServerController(8080, db);
+        new RESTServerController(8080, db);
         log.debug("Finished creating RESTServerController.");
-        HTMLServerController html = new HTMLServerController(4200);
+        new HTMLServerController(4200);
         log.debug("Finished creating HTMLServerController.");
     }
 }
