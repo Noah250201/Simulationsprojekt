@@ -1,5 +1,3 @@
-let chartInstances = {};
-
 function updateChartThreeWithData(data, chartId) {
     const jsonfile = data;
 
@@ -107,23 +105,17 @@ function updateChartThreeWithData(data, chartId) {
         }
     };
 
-    let ctx1 = document.getElementById('d2');
-    let ctx2 = document.getElementById('d2_2');
+    // Canvas für das Diagramm holen und es anpassen
+    var ctx1 = document.getElementById("d2"); // Die ID für das Canvas wird verwendet
+    resizeCanvas(ctx1);
+    var chart1 = new Chart(ctx1, config);
 
-    if (chartInstances['d2']) {
-        chartInstances['d2'].destroy();
-    }
-    if (chartInstances['d2_2']) {
-        chartInstances['d2_2'].destroy();
-    }
+    // Wenn du noch ein zweites Canvas hast, das auch aktualisiert werden soll:
+    var ctx2 = document.getElementById("d2_2");
+    resizeCanvas(ctx2);
+    var chart2 = new Chart(ctx2, config);
 
-    if (ctx1) {
-        chartInstances['d2'] = new Chart(ctx1.getContext('2d'), config);
-    }
-    if (ctx2) {
-        chartInstances['d2_2'] = new Chart(ctx2.getContext('2d'), config);
-    }
-
+    // Bei Fenstergrößenänderung wird die Größe der Diagramme angepasst
     window.addEventListener('resize', function() {
         resizeCanvas(ctx1);
         resizeCanvas(ctx2);

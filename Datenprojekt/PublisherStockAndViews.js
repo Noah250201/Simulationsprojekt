@@ -1,5 +1,3 @@
-let chartInstances = {};
-
 function updateChartOneWithData(data, chartId) {
   const jsonfile = data;
 
@@ -87,34 +85,22 @@ function updateChartOneWithData(data, chartId) {
       }
   };
 
+  // Canvas für das erste Diagramm erstellen
+  var ctx1 = document.getElementById('d1');
+  var chart1 = new Chart(ctx1, config);  // Chart für das erste Canvas
 
-  let ctx1 = document.getElementById('d1');
-    let ctx2 = document.getElementById('d1_2');
+  // Canvas für das zweite Diagramm erstellen
+  var ctx2 = document.getElementById('d1_2');
+  var chart2 = new Chart(ctx2, config);  // Chart für das zweite Canvas
 
-    // Falls die Charts schon existieren -> zerstören, um sie mit neuen Daten zu rendern
-    if (chartInstances['d1']) {
-        chartInstances['d1'].destroy();
-    }
-    if (chartInstances['d1_2']) {
-        chartInstances['d1_2'].destroy();
-    }
-
-    // Neue Charts in beide Canvas rendern
-    if (ctx1) {
-        chartInstances['d1'] = new Chart(ctx1.getContext('2d'), config);
-    }
-    if (ctx2) {
-        chartInstances['d1_2'] = new Chart(ctx2.getContext('2d'), config);
-    }
-
-    // Resize-Event für beide Canvas-Elemente
-    window.addEventListener('resize', function() {
-        resizeCanvas(ctx1);
-        resizeCanvas(ctx2);
-    });
+  // Bei Fenster-Resize beide Canvas-Größen anpassen
+  window.addEventListener('resize', function() {
+      resizeCanvas(ctx1);
+      resizeCanvas(ctx2);
+  });
 }
 
-
+// Funktion, um die Canvas-Größe bei Resize anzupassen
 function resizeCanvas(canvas) {
   if (canvas) {
       canvas.width = canvas.parentElement.clientWidth;
